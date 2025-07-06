@@ -1,0 +1,18 @@
+graph TD
+    A["Usuário envia mensagem para cadastro via WhatsApp"] --> B["n8n recebe mensagem"]
+    B --> C["n8n extrai número de telefone do remetente"]
+    C --> D{"Número do remetente é de um 'Administrador de Cadastro'?"}
+
+    D -- Sim --> E["n8n solicita o novo número de telefone a ser cadastrado"]
+    E --> F["Usuário (Admin) envia o novo número"]
+    F --> G["n8n valida o formato do novo número"]
+    G --> H["n8n insere/atualiza novo usuário na tabela 'cadastro_pessoas_fisica' no Supabase"]
+    H --> I{"Cadastro bem-sucedido?"}
+    I -- Sim --> J["n8n envia confirmação de cadastro ao Admin (via Waha)"]
+    J --> Z["Fim do Fluxo"]
+    I -- Não --> K["n8n informa ao Admin: Falha no cadastro (erro Supabase/validação)"]
+    K --> Z
+
+    D -- Não --> L["n8n informa ao Usuário: Seu número não está autorizado a realizar cadastros."]
+    L --> M["n8n informa ao Usuário: Para cadastrar, entre em contato com um dos números autorizados: [Lista de Números Autorizados]"]
+    M --> Z
