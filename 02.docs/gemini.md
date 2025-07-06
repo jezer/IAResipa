@@ -38,7 +38,9 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ├── 📂 05.banco_de_dados/                # Normas para bancos de dados
   ├── 📂 06.sistemas/                      # Infraestrutura e cloud
   ├── 📂 07.seguranca/                     # Políticas de segurança
-  └── 📂 08.templates/                     # Modelos reutilizáveis
+  ├── 📂 08.templates/                     # Modelos reutilizáveis
+  ├── 📂 09.solucoes/                     # Documentação de soluções específicas (ex: sistema de reserva)
+  ```
   ```
 
 # 3. Instruções para IAs
