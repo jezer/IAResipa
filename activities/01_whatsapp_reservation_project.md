@@ -35,12 +35,12 @@ Para o desenvolvimento do sistema de reserva via WhatsApp, as seguintes atividad
   - **Evidência:** Exportação JSON do workflow do n8n (`n8n_create_reservation.json`) e logs de execução mostrando inserções de reservas no Supabase.
 
 ### 1.2.5. Workflow de Iniciação de Pagamento Pix
-- [ ] **Ação:** Desenvolver o workflow no n8n para gerar um QR Code Pix ou link de pagamento e enviá-lo ao usuário.
-  - **Evidência:** Exportação JSON do workflow do n8n (`n8n_pix_initiation.json`) e logs de chamadas à API Pix.
+- [ ] **Ação:** Desenvolver o workflow no n8n para gerar um QR Code Pix ou link de pagamento, utilizando a API do Mercado Pago ou Itaú, com `txid` no formato `CEL_{NUMERO_CELULAR}_PED_{NUMERO_PEDIDO}`, e enviá-lo ao usuário.
+  - **Evidência:** Exportação JSON do workflow do n8n (`n8n_pix_initiation.json`) e logs de chamadas à API Pix (Mercado Pago/Itaú) com o `txid` formatado.
 
 ### 1.2.6. Workflow de Verificação de Status de Pagamento Pix
-- [ ] **Ação:** Implementar o workflow no n8n para verificar o status do pagamento Pix (via webhook de callback da API Pix ou consulta periódica).
-  - **Evidência:** Exportação JSON do workflow do n8n (`n8n_pix_status_check.json`) e logs de callbacks/consultas da API Pix.
+- [ ] **Ação:** Implementar o workflow no n8n para verificar o status do pagamento Pix (via webhook de callback da API Pix ou consulta periódica), utilizando o `txid` para rastreabilidade.
+  - **Evidência:** Exportação JSON do workflow do n8n (`n8n_pix_status_check.json`) e logs de callbacks/consultas da API Pix (Mercado Pago/Itaú) mostrando a verificação do `txid`.
 
 ### 1.2.7. Workflow de Cancelamento de Reserva
 - [ ] **Ação:** Criar o workflow no n8n para permitir que o usuário cancele uma reserva, atualizando o status no Supabase.
