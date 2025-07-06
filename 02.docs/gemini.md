@@ -30,6 +30,7 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ```
   02.docs/
   ├── 📄 00.README.md                     # Visão geral do repositório
+  ├── 📂 01.objetivo/                     # Documentação de objetivos e soluções principais (ex: sistema de reserva)
   ├── 📂 00.activities/                   # Gerenciamento de atividades e checklists
   ├── 📂 01.rules/                       # Regras e convenções (como listado acima)
   ├── 📂 02.arquitetura/                   # Padrões e decisões arquiteturais
@@ -38,8 +39,7 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ├── 📂 05.banco_de_dados/                # Normas para bancos de dados
   ├── 📂 06.sistemas/                      # Infraestrutura e cloud
   ├── 📂 07.seguranca/                     # Políticas de segurança
-  ├── 📂 08.templates/                     # Modelos reutilizáveis
-  ├── 📂 09.solucoes/                     # Documentação de soluções específicas (ex: sistema de reserva)
+  └── 📂 08.templates/                     # Modelos reutilizáveis
   ```
   ```
 
