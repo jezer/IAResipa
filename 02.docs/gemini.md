@@ -30,6 +30,7 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ```
   02.docs/
   ├── 📄 00.README.md                     # Visão geral do repositório
+  ├── 📂 00.activities/                   # Gerenciamento de atividades e checklists
   ├── 📂 01.rules/                       # Regras e convenções (como listado acima)
   ├── 📂 02.arquitetura/                   # Padrões e decisões arquiteturais
   ├── 📂 03.processos/                     # Metodologias e workflows
