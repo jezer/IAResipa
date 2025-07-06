@@ -19,12 +19,12 @@ O projeto está organizado em torno de "instruções" para diferentes modelos de
 As convenções e regras do projeto estão centralizadas na pasta `02.docs/` para garantir consistência e clareza. A estrutura é organizada da seguinte forma:
 
 - **2.1. `02.docs/03.rules/`**: Contém as regras fundamentais e convenções do projeto. Para detalhes, consulte os arquivos específicos:
-  - [Regras de Operações Git](../03.rules/git_operations.md)
-  - [Regras de Idioma e Estilo Geral](../03.rules/language_and_style.md)
-  - [Convenções de Código (Python)](../03.rules/coding_conventions.md)
-  - [Convenções de Documentação](../03.rules/documentation_conventions.md)
-  - [Regras de Gestão de Atividades](../03.rules/activity_management.md)
-  - [Exceções de Pastas](../03.rules/folder_exceptions.md)
+  - [01. Regras de Gestão de Atividades](../03.rules/01.activity_management.md)
+  - [02. Convenções de Código (Python)](../03.rules/02.coding_conventions.md)
+  - [03. Convenções de Documentação](../03.rules/03.documentation_conventions.md)
+  - [04. Exceções de Pastas](../03.rules/04.folder_exceptions.md)
+  - [05. Regras de Operações Git](../03.rules/05.git_operations.md)
+  - [06. Regras de Idioma e Estilo Geral](../03.rules/06.language_and_style.md)
 
 - **2.2. Estrutura de Documentação Adicional:** Além das regras, a pasta `02.docs/` pode conter subpastas temáticas para documentação mais aprofundada, como no exemplo abaixo:
   ```
@@ -60,7 +60,7 @@ Ao realizar qualquer alteração no projeto, siga estritamente os seguintes pass
 2.  **Seguir a Hierarquia de Pastas:** Respeite e mantenha a estrutura de pastas já estabelecida no projeto para todos os arquivos novos ou modificados.
 
 ## 4.3. Outras Instruções
-- **Numeração:** Sempre numere todos os títulos, subtítulos, pastas e arquivos quando apropriado para manter a ordem e a clareza.
+- **Numeração:** Sempre numere todos os títulos, subtítulos, pastas e arquivos para manter a ordem e a clareza. A única exceção é o arquivo `gemini.md`.
 - **Documentação:** Ao gerar documentação, siga o estilo dos arquivos `.md` existentes.
 - **Diagramas:** Ao ser solicitado para criar um fluxo ou diagrama, gere o código em formato Mermaid (`.mmd`).
 - **Log:** Sempre guarde todas as execuções no arquivo de log_yyyy_mm_dd_hh_MM_ss.txt
