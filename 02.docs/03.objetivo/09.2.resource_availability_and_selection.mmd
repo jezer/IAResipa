@@ -1,0 +1,13 @@
+graph TD
+    A[Usuário Cadastrado] --> B{O que deseja reservar?}
+    B -- Quiosque --> C[Sistema pergunta data/hora desejada para Quiosque]
+    B -- Quadra de Beach Tennis --> D[Sistema pergunta data/hora desejada para Quadra]
+    C --> E[Usuário informa data/hora]
+    D --> E
+    E --> F[n8n consulta Supabase por disponibilidade]
+    F --> G{Supabase retorna opções disponíveis?}
+    G -- Sim --> H[Sistema apresenta opções disponíveis ao usuário]
+    G -- Não --> I[Sistema informa que não há disponibilidade e sugere outra data/hora]
+    H --> J[Usuário seleciona opção desejada]
+    J --> K[Seleção confirmada - Prosseguir para criação de reserva]
+    I --> E
