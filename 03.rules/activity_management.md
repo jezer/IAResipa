@@ -1,4 +1,4 @@
-# Regras de Gestão de Atividades
+# 1. Regras de Gestão de Atividades
 
 Para garantir a clareza, rastreabilidade e padronização na execução das atividades do projeto, as seguintes regras devem ser seguidas:
 
