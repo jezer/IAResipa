@@ -1,0 +1,5 @@
+graph TD
+    A["Pagamento Pix Confirmado (Webhook/Consulta)"] --> B["n8n recebe confirmação de pagamento"]
+    B --> C["n8n atualiza status da Reserva para 'Confirmada' no Supabase"]
+    C --> D["n8n envia Confirmação Final de Reserva ao Usuário via Waha"]
+    D --> Z["Fim do Fluxo"]
