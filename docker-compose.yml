@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  waha:
+    image: devlikeapro/waha:latest
+    container_name: waha
+    ports:
+      - "3000:3000"
+    environment:
+      - WAHA_DEBUG=true
+      - WAHA_WEBHOOK_URL=http://n8n:5678/webhook/whatsapp
+      - WAHA_WEBHOOK_SECRET=your_waha_webhook_secret
+    volumes:
+      - ./waha_data:/app/sessions
+    restart: unless-stopped
+
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=n8nuser
+      - N8N_BASIC_AUTH_PASSWORD=n8npassword
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_EDITOR_BASE_URL=http://localhost:5678/
+      - WEBHOOK_URL=http://localhost:5678/
+      - N8N_ENCRYPTION_KEY=your_n8n_encryption_key
+      - N8N_METRICS_ENABLED=true
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
