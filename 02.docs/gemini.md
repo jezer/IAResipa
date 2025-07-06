@@ -58,6 +58,8 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ```
   ```
 
+  Para pastas que contêm código-fonte ou componentes de sistema (ex: `03.src/`, `04.deploy/`), a nomenclatura pode seguir um padrão de letras e underscores para categorização interna, como `A_db` ou `AA_db`, conforme detalhado nas regras de nomenclatura.
+
 # 3. Instruções para IAs
 
 Note que existem arquivos específicos para diferentes modelos (`gemini_...`, `dpseek_...`, `gpt_...`). Ao gerar novas instruções, siga este padrão.
