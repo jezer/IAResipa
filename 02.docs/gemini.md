@@ -64,7 +64,7 @@ Ao realizar qualquer alteração no projeto, siga estritamente os seguintes pass
 3.  **Seguir a Hierarquia de Pastas:** Respeite e mantenha a estrutura de pastas já estabelecida no projeto para todos os arquivos novos ou modificados.
 
 ## 4.3. Outras Instruções
-- **Numeração:** Sempre numere todos os títulos, subtítulos, pastas e arquivos para manter a ordem e a clareza. A única exceção é o arquivo `gemini.md`.
+- **Numeração:** Sempre numere todos os títulos, subtítulos, pastas e arquivos para manter a ordem e a clareza. A única exceção é o arquivo `gemini.md`. **Importante:** Os números devem ser únicos dentro do mesmo nível de diretório (para pastas e arquivos), facilitando a referência como `XX->YY` (ex: `00->01` para `00.rules/01.activity_management.md`).
 - **Documentação:** Ao gerar documentação, siga o estilo dos arquivos `.md` existentes.
 - **Diagramas:** Ao ser solicitado para criar um fluxo ou diagrama, gere o código em formato Mermaid (`.mmd`).
 - **Log:** Sempre guarde todas as execuções no arquivo de log_yyyy_mm_dd_hh_MM_ss.txt
