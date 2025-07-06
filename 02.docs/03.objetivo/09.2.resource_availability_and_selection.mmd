@@ -34,7 +34,7 @@ graph TD
     O -- Sim --> H
     O -- Entrar em Lista de Espera --> F
 
-    M --> P[Iniciar Pagamento Pix (via Python)]
+    M --> P[Iniciar Pagamento Pix - via Python]
     P --> Q{Pagamento Pix confirmado?}
     Q -- Sim --> R[Confirmar Reserva no Supabase]
     Q -- Não --> S[Informar falha no pagamento - Cancelar Reserva Provisória]
