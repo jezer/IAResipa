@@ -18,28 +18,28 @@ O projeto está organizado em torno de "instruções" para diferentes modelos de
 
 As convenções e regras do projeto estão centralizadas na pasta `02.docs/` para garantir consistência e clareza. A estrutura é organizada da seguinte forma:
 
-- **2.1. `02.docs/03.rules/`**: Contém as regras fundamentais e convenções do projeto. Para detalhes, consulte os arquivos específicos:
-  - [01. Regras de Gestão de Atividades](03.rules/01.activity_management.md)
-  - [02. Convenções de Código (Python)](03.rules/02.coding_conventions.md)
-  - [03. Convenções de Documentação](03.rules/03.documentation_conventions.md)
-  - [04. Exceções de Pastas](03.rules/04.folder_exceptions.md)
-  - [05. Regras de Operações Git](03.rules/05.git_operations.md)
-  - [06. Regras de Idioma e Estilo Geral](03.rules/06.language_and_style.md)
+- **2.1. `02.docs/00.rules/`**: Contém as regras fundamentais e convenções do projeto. Para detalhes, consulte os arquivos específicos:
+  - [01. Regras de Gestão de Atividades](00.rules/01.activity_management.md)
+  - [02. Convenções de Código (Python)](00.rules/02.coding_conventions.md)
+  - [03. Convenções de Documentação](00.rules/03.documentation_conventions.md)
+  - [04. Exceções de Pastas](00.rules/04.folder_exceptions.md)
+  - [05. Regras de Operações Git](00.rules/05.git_operations.md)
+  - [06. Regras de Idioma e Estilo Geral](00.rules/06.language_and_style.md)
 
 - **2.2. Estrutura de Documentação Adicional:** Além das regras, a pasta `02.docs/` pode conter subpastas temáticas para documentação mais aprofundada, como no exemplo abaixo:
   ```
   02.docs/
   ├── 📄 00.README.md                     # Visão geral do repositório
-  ├── 📂 01.objetivo/                     # Documentação de objetivos e soluções principais (ex: sistema de reserva)
-  ├── 📂 00.activities/                   # Gerenciamento de atividades e checklists
-  ├── 📂 01.rules/                       # Regras e convenções (como listado acima)
+  ├── 📂 00.rules/                       # Regras e convenções (como listado acima)
+  ├── 📂 01.templates/                    # Modelos reutilizáveis
   ├── 📂 02.arquitetura/                   # Padrões e decisões arquiteturais
-  ├── 📂 03.processos/                     # Metodologias e workflows
-  ├── 📂 04.ia_ml/                         # Regras para IA e Machine Learning
-  ├── 📂 05.banco_de_dados/                # Normas para bancos de dados
-  ├── 📂 06.sistemas/                      # Infraestrutura e cloud
-  ├── 📂 07.seguranca/                     # Políticas de segurança
-  └── 📂 08.templates/                     # Modelos reutilizáveis
+  ├── 📂 03.objetivo/                     # Documentação de objetivos e soluções principais (ex: sistema de reserva)
+  ├── 📂 04.activities/                   # Gerenciamento de atividades e checklists
+  ├── 📂 05.processos/                     # Metodologias e workflows
+  ├── 📂 06.ia_ml/                         # Regras para IA e Machine Learning
+  ├── 📂 07.banco_de_dados/                # Normas para bancos de dados
+  ├── 📂 08.sistemas/                      # Infraestrutura e cloud
+  └── 📂 09.seguranca/                     # Políticas de segurança
   ```
   ```
 
