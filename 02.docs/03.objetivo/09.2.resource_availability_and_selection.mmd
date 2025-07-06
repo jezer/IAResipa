@@ -11,8 +11,8 @@ graph TD
 
     B -- Não ou Sem Reservas Ativas --> C{O que deseja reservar ou entrar em Lista de Espera?}
 
-    C -- Reservar Quiosque --> D[Solicitar Tipo de Quiosque e Data/Hora]
-    C -- Reservar Quadra --> E[Solicitar Tipo de Quadra e Data/Hora]
+    C -- Reservar Quiosque --> D[Solicitar Tipo de Quiosque e Data Inteira]
+    C -- Reservar Quadra --> E[Solicitar Tipo de Quadra e Hora Inteira]
     C -- Entrar em Lista de Espera --> F[Solicitar Recurso e Data/Hora para Espera]
     C -- Ver Opções Disponíveis --> G[Sistema informa lista de Quiosques e Quadras]
     G --> C
