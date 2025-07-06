@@ -1,0 +1,18 @@
+graph TD
+    A["Usuário solicita cancelamento de reserva via WhatsApp"] --> B["n8n recebe solicitação de cancelamento"]
+    B --> C["n8n identifica reserva a ser cancelada no Supabase"]
+    C --> D{"Reserva encontrada e ativa?"}
+
+    D -- Sim --> E["n8n atualiza status da Reserva para 'Cancelada' no Supabase"]
+    E --> F["n8n consulta Lista de Espera para o recurso/horário liberado"]
+    F --> G{"Usuários na Lista de Espera?"}
+
+    G -- Sim --> H["n8n notifica próximo usuário da Lista de Espera via Waha"]
+    H --> I["n8n remove usuário notificado da Lista de Espera"]
+    I --> J["n8n envia Confirmação de Cancelamento ao Usuário Original via Waha"]
+    J --> Z["Fim do Fluxo"]
+
+    G -- Não --> J
+
+    D -- Não --> K["n8n informa Usuário: Nenhuma reserva ativa encontrada para cancelamento"]
+    K --> Z
