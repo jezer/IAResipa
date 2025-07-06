@@ -1,0 +1,24 @@
+graph TD
+    A["Usuário envia pergunta via WhatsApp"] --> B["n8n recebe mensagem"]
+    B --> C["n8n extrai a pergunta do usuário"]
+    C --> D["n8n formata a pergunta para a API Gemini (incluindo contexto/instruções)"]
+    D --> E["n8n chama a API Gemini"]
+    E --> F{"Gemini retorna resposta?"}
+
+    F -- Sim --> G["Gemini retorna resposta (texto, SQL, etc.)"]
+    G --> H{"Resposta Gemini requer consulta ao Supabase?"}
+
+    H -- Sim --> I["n8n extrai consulta SQL da resposta Gemini"]
+    I --> J["n8n executa consulta SQL no Supabase"]
+    J --> K{"Supabase retorna dados?"}
+
+    K -- Sim --> L["n8n formata dados do Supabase em resposta legível"]
+    L --> M["n8n envia resposta final ao Usuário via Waha"]
+    M --> Z["Fim do Fluxo"]
+
+    K -- Não --> M
+
+    H -- Não --> M
+
+    F -- Não --> N["Informar Usuário: Não foi possível gerar uma resposta (erro Gemini)"]
+    N --> Z
