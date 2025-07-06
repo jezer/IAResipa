@@ -52,6 +52,10 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
 
   03.src/                                # Código fonte principal da aplicação
   ```
+
+  ```
+  04.deploy/                             # Arquivos de configuração de deploy (Docker, etc.)
+  ```
   ```
 
 # 3. Instruções para IAs
