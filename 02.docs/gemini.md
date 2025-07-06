@@ -58,7 +58,7 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ```
   ```
 
-  Para pastas que contêm código-fonte ou componentes de sistema (ex: `03.src/`, `04.deploy/`), a nomenclatura pode seguir um padrão de letras e underscores para categorização interna, como `A_db` ou `AA_db`, conforme detalhado nas regras de nomenclatura.
+  Para pastas que contêm código-fonte ou componentes de sistema (ex: `03.src/`, `04.deploy/`), a nomenclatura pode seguir um padrão de letras e underscores para categorização interna, como `A_db` ou `AA_db`, conforme detalhado nas regras de nomenclatura. **Exceção:** A pasta raiz de uma biblioteca Python (ex: `resipa_lib` dentro de `03.src/`) deve conter apenas o nome da biblioteca, sem prefixos ou numeração.
 
 # 3. Instruções para IAs
 
