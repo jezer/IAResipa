@@ -1,12 +1,21 @@
 # PowerShell script to compile the library and generate a wheel file
 
-# Navigate to the project root directory
+$libraryName = "n8n_python_workflow"
+$version = "1.0.0"  # Update this version as needed
+$date = Get-Date -Format "yyyy_MM_dd_HH_mm"
+$wheelFileName = "${libraryName}_${version}_${date}.whl"
+
+# Navigate to the project directory
 Set-Location -Path (Join-Path -Path $PSScriptRoot -ChildPath "..")
 
-# Clean up previous builds
-Remove-Item -Path "build", "dist", "*.egg-info" -Recurse -ErrorAction SilentlyContinue
+# Run the setup script to build the library
+python setup.py bdist_wheel
 
-# Run the setup script to build the library (sdist and bdist_wheel)
-python setup.py sdist bdist_wheel
+# Move the generated wheel file to the desired location
+$generatedWheelPath = Join-Path -Path "dist" -ChildPath "*.whl"
+$destinationPath = Join-Path -Path "dist" -ChildPath $wheelFileName
 
-Write-Host "Library compiled successfully. Wheel file(s) and source distribution created in the 'dist/' directory."
+# Rename the generated wheel file
+Get-ChildItem -Path $generatedWheelPath | Rename-Item -NewName $wheelFileName
+
+Write-Host "Library compiled successfully. Wheel file created: $destinationPath"
