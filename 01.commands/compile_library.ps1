@@ -1,6 +1,6 @@
 # PowerShell script to compile the library and generate a wheel file
 
-$libraryName = "n8n_python_workflow"
+$libraryName = "resipaia"
 $version = "1.0.0"  # Update this version as needed
 $date = Get-Date -Format "yyyy_MM_dd_HH_mm"
 $wheelFileName = "${libraryName}_${version}_${date}.whl"
