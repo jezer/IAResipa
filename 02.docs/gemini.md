@@ -25,6 +25,7 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   - [04. Exceções de Pastas](00.rules/04.folder_exceptions.md)
   - [05. Regras de Operações Git](00.rules/05.git_operations.md)
   - [06. Regras de Idioma e Estilo Geral](00.rules/06.language_and_style.md)
+  - [08. Regras de Nomenclatura](00.rules/08.naming_conventions.md)
 
 - **2.2. Estrutura de Documentação Adicional:** Além das regras, a pasta `02.docs/` pode conter subpastas temáticas para documentação mais aprofundada, como no exemplo abaixo:
   ```
@@ -46,6 +47,10 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ├── 📂 07.banco_de_dados/                # Normas para bancos de dados
   ├── 📂 08.sistemas/                      # Infraestrutura e cloud
   └── 📂 09.seguranca/                     # Políticas de segurança
+  ```
+  ```
+
+  03.src/                                # Código fonte principal da aplicação
   ```
   ```
 
