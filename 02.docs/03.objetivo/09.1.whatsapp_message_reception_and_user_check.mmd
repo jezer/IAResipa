@@ -1,0 +1,11 @@
+graph TD
+    A[Usuário envia mensagem para WhatsApp] --> B{Waha recebe mensagem?};
+    B -- Sim --> C[Waha envia webhook para n8n];
+    C --> D[n8n recebe webhook];
+    D --> E[n8n extrai número de telefone do usuário];
+    E --> F{n8n consulta Supabase (tabela cadastro_pessoas_fisica)};
+    F -- Número cadastrado? --> G{Supabase responde};
+    G -- Sim --> H[Usuário cadastrado: Prosseguir para fluxo de reserva];
+    G -- Não --> I[Usuário não cadastrado: n8n envia mensagem para WhatsApp (via Waha) solicitando cadastro];
+    H --> J[Fim do fluxo de verificação de cadastro];
+    I --> J;
