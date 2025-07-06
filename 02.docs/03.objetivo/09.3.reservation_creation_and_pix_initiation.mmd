@@ -1,20 +1,20 @@
 graph TD
-    A[Usuário selecionou recurso e data/hora] --> B[n8n cria Reserva Provisória no Supabase]
-    B --> C{Reserva Provisória criada com sucesso?}
-    C -- Sim --> D[n8n aciona script Python para gerar Pix]
-    C -- Não --> E[Informar Usuário: Falha ao criar reserva - Tentar novamente ou contatar suporte]
-    E --> Z[Fim do Fluxo]
+    A["Usuário selecionou recurso e data/hora"] --> B["n8n cria Reserva Provisória no Supabase"]
+    B --> C{"Reserva Provisória criada com sucesso?"}
+    C -- Sim --> D["n8n aciona script Python para gerar Pix"]
+    C -- Não --> E["Informar Usuário: Falha ao criar reserva - Tentar novamente ou contatar suporte"]
+    E --> Z["Fim do Fluxo"]
 
-    D --> F{Script Python retorna dados do Pix (QR Code/Link/txid)?}
-    F -- Sim --> G[n8n envia dados do Pix para Usuário via Waha]
-    F -- Não --> H[Informar Usuário: Falha ao gerar Pix - Tentar novamente ou contatar suporte]
+    D --> F{"Script Python retorna dados do Pix (QR Code/Link/txid)?"}
+    F -- Sim --> G["n8n envia dados do Pix para Usuário via Waha"]
+    F -- Não --> H["Informar Usuário: Falha ao gerar Pix - Tentar novamente ou contatar suporte"]
     H --> Z
 
-    G --> I[Aguardar Confirmação de Pagamento Pix]
-    I --> J{Pagamento Pix confirmado?}
-    J -- Sim --> K[n8n atualiza status da Reserva para Confirmada no Supabase]
-    J -- Não --> L[Informar Usuário: Pagamento não confirmado - Cancelar Reserva Provisória]
+    G --> I["Aguardar Confirmação de Pagamento Pix"]
+    I --> J{"Pagamento Pix confirmado?"}
+    J -- Sim --> K["n8n atualiza status da Reserva para Confirmada no Supabase"]
+    J -- Não --> L["Informar Usuário: Pagamento não confirmado - Cancelar Reserva Provisória"]
     L --> Z
 
-    K --> M[Enviar Confirmação Final de Reserva ao Usuário via Waha]
-    M --> P[Iniciar Pagamento Pix via Python]
+    K --> M["Enviar Confirmação Final de Reserva ao Usuário via Waha"]
+    M --> P["Iniciar Pagamento Pix (via Python)"]

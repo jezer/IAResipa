@@ -1,50 +1,50 @@
 graph TD
-    A[Usuário Cadastrado] --> B{Verificar Reservas Ativas?}
+    A["Usuário Cadastrado"] --> B{"Verificar Reservas Ativas?"}
 
-    B -- Sim --> B1{Possui Quiosque Alugado?}
-    B1 -- Sim --> B1a[Informar: Já possui Quiosque alugado]
-    B1a --> Z[Fim do Fluxo - Sugerir Gerenciamento de Reservas]
+    B -- Sim --> B1{"Possui Quiosque Alugado?"}
+    B1 -- Sim --> B1a["Informar: Já possui Quiosque alugado"]
+    B1a --> Z["Fim do Fluxo - Sugerir Gerenciamento de Reservas"]
 
-    B1 -- Não --> B2{Possui Quadra Alugada?}
-    B2 -- Sim --> B2a[Informar: Já possui Quadra alugada]
+    B1 -- Não --> B2{"Possui Quadra Alugada?"}
+    B2 -- Sim --> B2a["Informar: Já possui Quadra alugada"]
     B2a --> Z
 
-    B -- Não ou Sem Reservas Ativas --> C{O que deseja reservar ou entrar em Lista de Espera?}
+    B -- "Não ou Sem Reservas Ativas" --> C{"O que deseja reservar ou entrar em Lista de Espera?"}
 
-    C -- Reservar Quiosque --> D[Solicitar Tipo de Quiosque e Data Inteira]
-    C -- Reservar Quadra --> E[Solicitar Tipo de Quadra e Hora Inteira]
-    C -- Entrar em Lista de Espera --> F[Solicitar Recurso e Data/Hora para Espera]
-    C -- Ver Opções Disponíveis --> G[Sistema informa lista de Quiosques e Quadras]
+    C -- "Reservar Quiosque" --> D["Solicitar Tipo de Quiosque e Data Inteira"]
+    C -- "Reservar Quadra" --> E["Solicitar Tipo de Quadra e Hora Inteira"]
+    C -- "Entrar em Lista de Espera" --> F["Solicitar Recurso e Data/Hora para Espera"]
+    C -- "Ver Opções Disponíveis" --> G["Sistema informa lista de Quiosques e Quadras"]
     G --> C
 
-    D --> H[Usuário informa detalhes]
+    D --> H["Usuário informa detalhes"]
     E --> H
     F --> H
 
-    H --> I[n8n consulta Supabase por disponibilidade]
-    I --> J{Supabase retorna opções disponíveis?}
+    H --> I["n8n consulta Supabase por disponibilidade"]
+    I --> J{"Supabase retorna opções disponíveis?"}
 
-    J -- Sim --> K[Sistema apresenta opções disponíveis]
-    K --> L{Usuário seleciona opção?}
-    L -- Sim --> M[Criar Reserva Provisória]
+    J -- Sim --> K["Sistema apresenta opções disponíveis"]
+    K --> L{"Usuário seleciona opção?"}
+    L -- Sim --> M["Criar Reserva Provisória"]
     L -- Não --> C
 
-    J -- Não --> N[Sistema informa indisponibilidade]
-    N --> O{Sugere outra data/hora ou entrar em Lista de Espera?}
+    J -- Não --> N["Sistema informa indisponibilidade"]
+    N --> O{"Sugere outra data/hora ou entrar em Lista de Espera?"}
     O -- Sim --> H
-    O -- Entrar em Lista de Espera --> F
+    O -- "Entrar em Lista de Espera" --> F
 
-    M --> P[Iniciar Pagamento Pix - via Python]
-    P --> Q{Pagamento Pix confirmado?}
-    Q -- Sim --> R[Confirmar Reserva no Supabase]
-    Q -- Não --> S[Informar falha no pagamento - Cancelar Reserva Provisória]
+    M --> P["Iniciar Pagamento Pix - via Python"]
+    P --> Q{"Pagamento Pix confirmado?"}
+    Q -- Sim --> R["Confirmar Reserva no Supabase"]
+    Q -- Não --> S["Informar falha no pagamento - Cancelar Reserva Provisória"]
     S --> Z
 
-    R --> T[Enviar Confirmação de Reserva ao Usuário]
+    R --> T["Enviar Confirmação de Reserva ao Usuário"]
     T --> Z
 
-    F --> U[Adicionar à Lista de Espera no Supabase]
-    U --> V[Enviar Confirmação de Entrada na Lista de Espera]
+    F --> U["Adicionar à Lista de Espera no Supabase"]
+    U --> V["Enviar Confirmação de Entrada na Lista de Espera"]
     V --> Z
 
-    Z[Fim do Fluxo]
+    Z["Fim do Fluxo"]
