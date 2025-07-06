@@ -35,6 +35,12 @@ As convenções e regras do projeto estão centralizadas na pasta `02.docs/` par
   ├── 📂 02.arquitetura/                   # Padrões e decisões arquiteturais
   ├── 📂 03.objetivo/                     # Documentação de objetivos e soluções principais (ex: sistema de reserva)
   ├── 📂 04.activities/                   # Gerenciamento de atividades e checklists
+    ├── [01. Checklist do Projeto: Sistema de Reserva via WhatsApp](04.activities/01.whatsapp_reservation_project.md)
+    ├── [02. Checklist de Melhorias nas Regras](04.activities/02.rule_improvements_checklist.md)
+    ├── [03. Checklist de Atividades: Configuração do Ambiente](04.activities/03.configuration_activities.md)
+    ├── [04. Checklist de Atividades: Criação e Configuração de Workflows n8n](04.activities/04.n8n_workflows_activities.md)
+    ├── [05. Checklist de Atividades: Desenvolvimento de Scripts Python](04.activities/05.python_scripts_activities.md)
+    ├── [06. Checklist de Atividades: Fase de Testes](04.activities/06.testing_activities.md)
   ├── 📂 05.processos/                     # Metodologias e workflows
   ├── 📂 06.ia_ml/                         # Regras para IA e Machine Learning
   ├── 📂 07.banco_de_dados/                # Normas para bancos de dados

@@ -9,7 +9,8 @@ graph TD
     G --> H["n8n insere/atualiza novo usuário na tabela 'cadastro_pessoas_fisica' no Supabase"]
     H --> I{"Cadastro bem-sucedido?"}
     I -- Sim --> J["n8n envia confirmação de cadastro ao Admin (via Waha)"]
-    J --> Z["Fim do Fluxo"]
+    J --> J1["n8n envia mensagem de boas-vindas ao Novo Usuário (via Waha)"]
+    J1 --> Z["Fim do Fluxo"]
     I -- Não --> K["n8n informa ao Admin: Falha no cadastro (erro Supabase/validação)"]
     K --> Z
 
