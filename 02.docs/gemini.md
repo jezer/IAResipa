@@ -57,7 +57,8 @@ Ao realizar qualquer alteração no projeto, siga estritamente os seguintes pass
 1.  **Analisar e Estruturar Regras:** Antes de implementar, analise as regras existentes. Ao criar ou modificar regras, separe-as em:
     *   **Regras Genéricas:** Templates reutilizáveis para futuros projetos.
     *   **Regras Personalizadas:** Específicas para a arquitetura deste projeto.
-2.  **Seguir a Hierarquia de Pastas:** Respeite e mantenha a estrutura de pastas já estabelecida no projeto para todos os arquivos novos ou modificados.
+2.  **Numeração de Pastas e Arquivos:** Sempre numere todas as novas pastas e arquivos (exceto `gemini.md`) para manter a ordem e a clareza. Para pastas e arquivos existentes, aplique a numeração se ainda não estiverem numerados.
+3.  **Seguir a Hierarquia de Pastas:** Respeite e mantenha a estrutura de pastas já estabelecida no projeto para todos os arquivos novos ou modificados.
 
 ## 4.3. Outras Instruções
 - **Numeração:** Sempre numere todos os títulos, subtítulos, pastas e arquivos para manter a ordem e a clareza. A única exceção é o arquivo `gemini.md`.
