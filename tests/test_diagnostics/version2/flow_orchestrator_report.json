@@ -1,0 +1,111 @@
+{"created": 1752721449.485195, "duration": 1.997727394104004, "exitcode": 1, "root": "C:\\source\\IAResipa", "environment": {}, "summary": {"failed": 2, "total": 2, "collected": 2}, "collectors": [{"nodeid": "", "outcome": "passed", "result": [{"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py", "type": "Module"}]}, {"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py::TestFlowOrchestrator", "outcome": "passed", "result": [{"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py::TestFlowOrchestrator::test_routing_scenarios[Routing_RegisteredUser]", "type": "Function", "lineno": 16}, {"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py::TestFlowOrchestrator::test_routing_scenarios[Routing_UnregisteredUser]", "type": "Function", "lineno": 16}]}, {"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py", "outcome": "passed", "result": [{"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py::TestFlowOrchestrator", "type": "Class"}]}], "tests": [{"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py::TestFlowOrchestrator::test_routing_scenarios[Routing_RegisteredUser]", "lineno": 16, "outcome": "failed", "keywords": ["test_routing_scenarios[Routing_RegisteredUser]", "Routing_RegisteredUser", "TestFlowOrchestrator", "parametrize", "test_flow_orchestrator.py", "07.organizacaofluxo", "tests", "IAResipa", ""], "setup": {"duration": 0.0019159999210387468, "outcome": "passed"}, "call": {"duration": 0.027395599987357855, "outcome": "failed", "crash": {"path": "C:\\source\\IAResipa\\tests\\07.organizacaofluxo\\test_flow_orchestrator.py", "lineno": 62, "message": "assert 123 == 456"}, "traceback": [{"path": "tests\\07.organizacaofluxo\\test_flow_orchestrator.py", "lineno": 62, "message": "AssertionError"}], "stdout": "Executando n\u00f3: classify_intent
+Executando n\u00f3: check_user
+Executando n\u00f3: execute_logic para a inten\u00e7\u00e3o check_availability
+Executando n\u00f3: format_response
+", "longrepr": "self = <test_flow_orchestrator.TestFlowOrchestrator object at 0x00000195E382FED0>
+scenario_data = {'expected_state': {'intent': 'check_availability', 'is_registered': True, 'response_contains': 'Resposta formatada pa...ck_check_user': {'is_registered': True, 'user_id': 456}, 'mock_classify_intent': {'intent': 'check_availability'}, ...}
+
+    def test_routing_scenarios(self, scenario_data):
+        # Arrange
+        initial_state = scenario_data[\"initial_state\"].copy()
+        mock_classify_intent_data = scenario_data[\"mock_classify_intent\"]
+        mock_check_user_data = scenario_data[\"mock_check_user\"]
+        expected_state = scenario_data[\"expected_state\"]
+    
+        # Mock das fun\u00e7\u00f5es dos n\u00f3s e re-compila\u00e7\u00e3o do grafo
+        with patch('resipaia.organizacaofluxo.flow_orchestrator.classify_intent') as mock_classify:
+            with patch('resipaia.organizacaofluxo.flow_orchestrator.check_user') as mock_check_user:
+    
+                def classify_side_effect(state):
+                    # Cria uma nova inst\u00e2ncia de ReservationState para evitar modificar o original
+                    new_state = ReservationState(**state)
+                    new_state.update(mock_classify_intent_data)
+                    return new_state
+    
+                def check_user_side_effect(state):
+                    # Cria uma nova inst\u00e2ncia de ReservationState para evitar modificar o original
+                    new_state = ReservationState(**state)
+                    new_state.update(mock_check_user_data)
+                    return new_state
+    
+                mock_classify.side_effect = classify_side_effect
+                mock_check_user.side_effect = check_user_side_effect
+    
+                # Re-import the module to ensure the workflow picks up the patched functions
+                import importlib
+                import resipaia.organizacaofluxo.flow_orchestrator
+                importlib.reload(resipaia.organizacaofluxo.flow_orchestrator)
+    
+                # Get the reloaded workflow object
+                reloaded_workflow = resipaia.organizacaofluxo.flow_orchestrator.workflow
+    
+                # Re-compile the graph with the mocked functions
+                test_app = reloaded_workflow.compile()
+    
+                # Act
+                final_state = test_app.invoke(initial_state)
+    
+                # Assert
+                for key, value in expected_state.items():
+                    if key == \"response_contains\":
+                        assert value in final_state[\"response\"]
+                    else:
+>                       assert final_state[key] == value
+E                       assert 123 == 456
+
+tests\\07.organizacaofluxo\\test_flow_orchestrator.py:62: AssertionError"}, "teardown": {"duration": 0.0006323999259620905, "outcome": "passed"}}, {"nodeid": "tests/07.organizacaofluxo/test_flow_orchestrator.py::TestFlowOrchestrator::test_routing_scenarios[Routing_UnregisteredUser]", "lineno": 16, "outcome": "failed", "keywords": ["test_routing_scenarios[Routing_UnregisteredUser]", "Routing_UnregisteredUser", "TestFlowOrchestrator", "parametrize", "test_flow_orchestrator.py", "07.organizacaofluxo", "tests", "IAResipa", ""], "setup": {"duration": 0.00046410004142671824, "outcome": "passed"}, "call": {"duration": 0.013786000083200634, "outcome": "failed", "crash": {"path": "C:\\source\\IAResipa\\tests\\07.organizacaofluxo\\test_flow_orchestrator.py", "lineno": 62, "message": "assert True == False"}, "traceback": [{"path": "tests\\07.organizacaofluxo\\test_flow_orchestrator.py", "lineno": 62, "message": "AssertionError"}], "stdout": "Executando n\u00f3: classify_intent
+Executando n\u00f3: check_user
+Executando n\u00f3: execute_logic para a inten\u00e7\u00e3o check_availability
+Executando n\u00f3: format_response
+", "longrepr": "self = <test_flow_orchestrator.TestFlowOrchestrator object at 0x00000195E39A0190>
+scenario_data = {'expected_state': {'is_registered': False, 'response': 'Usu\u00e1rio n\u00e3o cadastrado.'}, 'initial_state': {'phone_number': ...istered': False, 'response': 'Usu\u00e1rio n\u00e3o cadastrado.'}, 'mock_classify_intent': {'intent': 'check_availability'}, ...}
+
+    def test_routing_scenarios(self, scenario_data):
+        # Arrange
+        initial_state = scenario_data[\"initial_state\"].copy()
+        mock_classify_intent_data = scenario_data[\"mock_classify_intent\"]
+        mock_check_user_data = scenario_data[\"mock_check_user\"]
+        expected_state = scenario_data[\"expected_state\"]
+    
+        # Mock das fun\u00e7\u00f5es dos n\u00f3s e re-compila\u00e7\u00e3o do grafo
+        with patch('resipaia.organizacaofluxo.flow_orchestrator.classify_intent') as mock_classify:
+            with patch('resipaia.organizacaofluxo.flow_orchestrator.check_user') as mock_check_user:
+    
+                def classify_side_effect(state):
+                    # Cria uma nova inst\u00e2ncia de ReservationState para evitar modificar o original
+                    new_state = ReservationState(**state)
+                    new_state.update(mock_classify_intent_data)
+                    return new_state
+    
+                def check_user_side_effect(state):
+                    # Cria uma nova inst\u00e2ncia de ReservationState para evitar modificar o original
+                    new_state = ReservationState(**state)
+                    new_state.update(mock_check_user_data)
+                    return new_state
+    
+                mock_classify.side_effect = classify_side_effect
+                mock_check_user.side_effect = check_user_side_effect
+    
+                # Re-import the module to ensure the workflow picks up the patched functions
+                import importlib
+                import resipaia.organizacaofluxo.flow_orchestrator
+                importlib.reload(resipaia.organizacaofluxo.flow_orchestrator)
+    
+                # Get the reloaded workflow object
+                reloaded_workflow = resipaia.organizacaofluxo.flow_orchestrator.workflow
+    
+                # Re-compile the graph with the mocked functions
+                test_app = reloaded_workflow.compile()
+    
+                # Act
+                final_state = test_app.invoke(initial_state)
+    
+                # Assert
+                for key, value in expected_state.items():
+                    if key == \"response_contains\":
+                        assert value in final_state[\"response\"]
+                    else:
+>                       assert final_state[key] == value
+E                       assert True == False
+
+tests\\07.organizacaofluxo\\test_flow_orchestrator.py:62: AssertionError"}, "teardown": {"duration": 0.0008813999593257904, "outcome": "passed"}}]}

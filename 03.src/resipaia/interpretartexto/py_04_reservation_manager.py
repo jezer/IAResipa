@@ -7,10 +7,10 @@ from resipaia.A_db.db_00_supabase_config import get_supabase_client
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def check_active_reservations(supabase_client: Client, message_details: dict) -> dict:
-    phone_number = message_details.get('from')
-    logging.info(f"Verificando reservas ativas para: {phone_number}")
+    user_id = message_details.get('user_id')
+    logging.info(f"Verificando reservas ativas para: {user_id}")
     try:
-        response = supabase_client.table('reservas').select('*').eq('user_id', phone_number).eq('status', 'ativa').execute()
+        response = supabase_client.table('reservas').select('*').eq('user_id', user_id).eq('status', 'ativa').execute()
         if response.data:
             return {"status": "active_reservations_found", "reservations": response.data, "message": f"Você possui {len(response.data)} reservas ativas."}
         else:
@@ -20,11 +20,11 @@ def check_active_reservations(supabase_client: Client, message_details: dict) ->
         return {"status": "error", "message": str(e)}
 
 def check_availability(supabase_client: Client, message_details: dict) -> dict:
-    query = message_details.get('body') # Pode ser 'quiosque', 'quadra', 'data'
-    logging.info(f"Consultando disponibilidade para: {query}")
+    resource_type = message_details.get('resource_type')
+    logging.info(f"Consultando disponibilidade para: {resource_type}")
     try:
         # Exemplo simplificado: buscar recursos disponíveis
-        response = supabase_client.table('recursos').select('*').eq('is_available', True).execute()
+        response = supabase_client.table('recursos').select('*').eq('is_available', True).eq('type', resource_type).execute()
         if response.data:
             options = [f"{r['name']} ({r['type']})" for r in response.data]
             return {"status": "available", "options": options, "message": "Opções disponíveis: " + ", ".join(options)}
@@ -57,15 +57,15 @@ def create_provisional_reservation(supabase_client: Client, message_details: dic
         return {"status": "error", "message": str(e)}
 
 def manage_existing_reservations(supabase_client: Client, message_details: dict) -> dict:
-    phone_number = message_details.get('from')
+    user_id = message_details.get('user_id')
     action = message_details.get('action', 'view')
     reservation_id = message_details.get('reservation_id')
     new_data = message_details.get('new_data')
 
-    logging.info(f"Gerenciando reservas para {phone_number}: Ação={action}, ID={reservation_id}, Dados={new_data}")
+    logging.info(f"Gerenciando reservas para {user_id}: Ação={action}, ID={reservation_id}, Dados={new_data}")
     try:
         if action == "view":
-            response = supabase_client.table('reservas').select('*').eq('user_id', phone_number).execute()
+            response = supabase_client.table('reservas').select('*').eq('user_id', user_id).execute()
             if response.data:
                 return {"status": "success", "reservations": response.data, "message": "Suas reservas:"}
             else:

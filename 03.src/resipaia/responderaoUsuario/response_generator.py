@@ -4,12 +4,14 @@ import os
 import json
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
 
-from resipaia.organizacaofluxo.flow_orchestrator import ReservationState
+from resipaia.common.types import ReservationState
 
 # Atividade 1: Configuração do Cliente e Modelo Gemini
-# Assumindo que a API Key está nas variáveis de ambiente
-llm = ChatGoogleGenerativeAI(model="gemini-pro")
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=os.environ.get("GEMINI_API_KEY"))
 
 # Prompt para classificação de intenção, conforme a documentação
 intent_prompt_template = ChatPromptTemplate.from_template(

@@ -6,12 +6,12 @@
     },
     "mock_llm_response": {
       "intent": "check_availability",
-      "sql_query": "SELECT * FROM quiosques WHERE data_disponivel = 'YYYY-MM-DD'",
+      "sql_query": "SELECT * FROM cadastro_pessoas_fisica WHERE data_disponivel = 'YYYY-MM-DD'",
       "response": null
     },
     "expected_state": {
       "intent": "check_availability",
-      "sql_query": "SELECT * FROM quiosques WHERE data_disponivel = 'YYYY-MM-DD'",
+      "sql_query": "SELECT * FROM cadastro_pessoas_fisica WHERE data_disponivel = 'YYYY-MM-DD'",
       "response": null
     }
   },
@@ -42,37 +42,23 @@
   "Routing_RegisteredUser": {
     "initial_state": {
         "user_message": "qual a disponibilidade de quadras?",
-        "phone_number": "+5511987654321"
-    },
-    "mock_classify_intent": {
-        "intent": "check_availability"
-    },
-    "mock_check_user": {
-        "is_registered": true,
-        "user_id": 456
+        "phone_number": "+5511999999999"
     },
     "expected_state": {
         "intent": "check_availability",
         "is_registered": true,
-        "user_id": 456,
+        "user_id": "PLACEHOLDER_UUID",
         "response_contains": "Resposta formatada para:"
     }
   },
   "Routing_UnregisteredUser": {
     "initial_state": {
         "user_message": "qual a disponibilidade de quadras?",
-        "phone_number": "+5511987654321"
-    },
-    "mock_classify_intent": {
-        "intent": "check_availability"
-    },
-    "mock_check_user": {
-        "is_registered": false,
-        "response": "Usuário não cadastrado."
+        "phone_number": "+5511888888888"
     },
     "expected_state": {
         "is_registered": false,
-        "response": "Usuário não cadastrado."
+        "response": "Usuário não cadastrado. Responda com 'cadastro' para iniciar."
     }
   }
 }

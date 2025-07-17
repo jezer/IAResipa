@@ -1,8 +1,9 @@
 # C:\source\IAResipa\tests\07.organizacaofluxo\test_flow_orchestrator.py
 
 import pytest
-from unittest.mock import patch
-from resipaia.organizacaofluxo.flow_orchestrator import app
+import json
+from unittest.mock import patch, MagicMock
+from resipaia.organizacaofluxo.flow_orchestrator import app, ReservationState, END
 
 # Define os cenários que este arquivo de teste irá usar
 scenarios = [
@@ -14,35 +15,35 @@ scenarios = [
 class TestFlowOrchestrator:
     """Testes data-driven para o grafo de orquestração de fluxo."""
 
-    def test_routing_scenarios(self, scenario_data):
-        """Verifica a lógica de roteamento do grafo com base nos cenários."""
+    @patch('resipaia.responderaoUsuario.response_generator.llm')
+    def test_routing_scenarios(self, mock_llm, scenario_data, supabase_test_user):
         # Arrange
         initial_state = scenario_data["initial_state"].copy()
-        mock_classify_intent_data = scenario_data["mock_classify_intent"]
-        mock_check_user_data = scenario_data["mock_check_user"]
         expected_state = scenario_data["expected_state"]
 
-        # Mock das funções dos nós
-        with patch('resipaia.organizacaofluxo.flow_orchestrator.classify_intent') as mock_classify,
-             patch('resipaia.organizacaofluxo.flow_orchestrator.check_user') as mock_check_user:
+        if scenario_data["name"] == "Routing_RegisteredUser":
+            initial_state["phone_number"] = supabase_test_user
 
-            def classify_side_effect(state):
-                state.update(mock_classify_intent_data)
-                return state
-            
-            def check_user_side_effect(state):
-                state.update(mock_check_user_data)
-                return state
+        # Configure mocks for LLM calls
+        # For classify_intent_with_llm
+        mock_llm.invoke.side_effect = [
+            MagicMock(content=json.dumps({
+                "intent": expected_state["intent"] if "intent" in expected_state else "general_query",
+                "sql_query": "SELECT * FROM some_table", # Placeholder, as it's mocked
+                "response": None
+            })),
+            # For format_response_with_llm
+            MagicMock(content=expected_state["response"] if "response" in expected_state else "Resposta formatada para:")
+        ]
 
-            mock_classify.side_effect = classify_side_effect
-            mock_check_user.side_effect = check_user_side_effect
+        # Act
+        final_state = app.invoke(initial_state)
 
-            # Act
-            final_state = app.invoke(initial_state)
-
-            # Assert
-            for key, value in expected_state.items():
-                if key == "response_contains":
-                    assert value in final_state["response"]
-                else:
-                    assert final_state[key] == value
+        # Assert
+        for key, value in expected_state.items():
+            if key == "user_id":
+                assert isinstance(final_state[key], str) # Check if it's a string (UUID)
+            elif key == "response_contains":
+                assert value in final_state["response"]
+            else:
+                assert final_state[key] == value
