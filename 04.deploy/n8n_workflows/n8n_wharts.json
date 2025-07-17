@@ -1,0 +1,440 @@
+{
+  "name": "whats",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "db4a2f2d-1c4c-4c28-8787-181c3b7d22a9",
+      "name": "Webhook",
+      "webhookId": "c0506275-4d41-43c3-ab03-cf69aeeeefe9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0e472ff4-e734-49ae-8b1a-d1cc21de06b4",
+              "name": "session",
+              "value": "={{ $json.body.session }}",
+              "type": "string"
+            },
+            {
+              "id": "d90b05a2-d774-4ea4-aa8f-ef52f8f302ec",
+              "name": "PushName",
+              "value": "={{ $json.body.payload._data.Info.PushName }}",
+              "type": "string"
+            },
+            {
+              "id": "636afe18-0e4f-453d-b4c5-d25a7b84ed98",
+              "name": "Chat",
+              "value": "={{ $json.body.payload._data.Info.Chat }}",
+              "type": "string"
+            },
+            {
+              "id": "52cafda0-3eb4-4f2d-a5cd-60fae13908c8",
+              "name": "id",
+              "value": "={{ $json.body.payload.id }}",
+              "type": "string"
+            },
+            {
+              "id": "cc8d20f6-7074-473c-821d-041d9aef5ca5",
+              "name": "event",
+              "value": "={{ $json.body.event }}",
+              "type": "string"
+            },
+            {
+              "id": "a199865c-c5e1-447e-b13f-7472ed874036",
+              "name": "fromMe",
+              "value": "={{ $json.body.payload.fromMe }}",
+              "type": "boolean"
+            },
+            {
+              "id": "e627f63c-39b9-4576-b5d0-dae83229c4c5",
+              "name": "text",
+              "value": "={{ $json.body.payload._data.Message.extendedTextMessage.text }}",
+              "type": "string"
+            },
+            {
+              "id": "11c0a011-6751-4581-a626-269302fc35f0",
+              "name": "body",
+              "value": "={{ $json.body.payload.body }}",
+              "type": "string"
+            },
+            {
+              "id": "f5a358d8-c25d-4354-bba9-80f3f6712679",
+              "name": "fromMe",
+              "value": "={{ $json.body.payload.fromMe }}",
+              "type": "boolean"
+            },
+            {
+              "id": "1f6364b5-9de0-4de1-9092-ecbb5fae9189",
+              "name": "from",
+              "value": "={{ $json.body.payload.from }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        300,
+        -60
+      ],
+      "id": "e81efb54-1da4-47fb-9384-fa0f273d9e35",
+      "name": "Dados"
+    },
+    {
+      "parameters": {
+        "resource": "Chatting",
+        "operation": "Send Seen",
+        "session": "={{ $('Dados').item.json.body.session }}",
+        "chatId": "={{ $('Dados').item.json.body.payload.from }}",
+        "messageId": "={{ $('Dados').item.json.body.payload.id }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-waha.WAHA",
+      "typeVersion": 202411,
+      "position": [
+        880,
+        -60
+      ],
+      "id": "f5e69f9f-c6df-4106-9047-d960164a008c",
+      "name": "WAHA",
+      "credentials": {
+        "wahaApi": {
+          "id": "hG1A75upRqCi1hd4",
+          "name": "WAHA account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Chatting",
+        "operation": "Send Text",
+        "session": "={{ $('Dados').item.json.body.session }}",
+        "chatId": "={{ $('Dados').item.json.body.payload._data.Info.Chat }}",
+        "text": "={{ $('AI Agent').item.json.output }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-waha.WAHA",
+      "typeVersion": 202411,
+      "position": [
+        960,
+        160
+      ],
+      "id": "5919a4a6-38d9-4bfa-8a3e-0da6095f3cab",
+      "name": "WAHA1",
+      "credentials": {
+        "wahaApi": {
+          "id": "hG1A75upRqCi1hd4",
+          "name": "WAHA account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Chatting",
+        "operation": "Start Typing",
+        "session": "={{ $json.body.session }}",
+        "chatId": "={{ $json.body.payload._data.Info.Chat }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-waha.WAHA",
+      "typeVersion": 202411,
+      "position": [
+        280,
+        120
+      ],
+      "id": "b2e37025-1c6e-48e7-96f0-ccc4fd037cb5",
+      "name": "WAHA3",
+      "credentials": {
+        "wahaApi": {
+          "id": "hG1A75upRqCi1hd4",
+          "name": "WAHA account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Chatting",
+        "operation": "Stop Typing",
+        "session": "={{ $('Dados').item.json.body.session }}",
+        "chatId": "={{ $('Dados').item.json.body.payload._data.Info.Chat }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-waha.WAHA",
+      "typeVersion": 202411,
+      "position": [
+        1200,
+        180
+      ],
+      "id": "95811c76-e6c0-4abb-9e1c-5578f24b1b0b",
+      "name": "WAHA2",
+      "credentials": {
+        "wahaApi": {
+          "id": "hG1A75upRqCi1hd4",
+          "name": "WAHA account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "# exemplo mínimo em Python no n8n\n# qualquer variável Python normal aqui\nmessage = items[0].json\nprint('teste')\nprint(items[0].json[\"session\"])\n\n# para enviar um JSON de saída, devolva um dict com a chave \"json\"\nreturn {\"json\": {\"message\": message}}\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        600,
+        -120
+      ],
+      "id": "758c2dfa-3bef-4cfa-9958-9c76f4a9fb71",
+      "name": "Code",
+      "alwaysOutputData": true
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "WAHA/2025.5.6",
+            "x-webhook-request-id": "01JZH4X11FVCN7M6KJG2RRKG21",
+            "x-webhook-timestamp": "1751848485934",
+            "content-length": "2064",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "host": "host.docker.internal:5678",
+            "connection": "keep-alive"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": "evt_01jzh4x11e4nethrqscp28c6k2",
+            "timestamp": 1751848485934,
+            "event": "message",
+            "session": "default",
+            "metadata": {},
+            "me": {
+              "id": "5515997972862@c.us",
+              "pushName": "associação reserva Ipanema",
+              "jid": "5515997972862:1@s.whatsapp.net"
+            },
+            "payload": {
+              "id": "false_5511964703712@c.us_3F5DEEB366F1178BDE50",
+              "timestamp": 1751848486,
+              "from": "5511964703712@c.us",
+              "fromMe": false,
+              "source": "app",
+              "body": "ajuda",
+              "to": null,
+              "participant": null,
+              "hasMedia": false,
+              "media": null,
+              "ack": 2,
+              "ackName": "DEVICE",
+              "replyTo": null,
+              "_data": {
+                "Info": {
+                  "Chat": "5511964703712@s.whatsapp.net",
+                  "Sender": "5511964703712:17@s.whatsapp.net",
+                  "IsFromMe": false,
+                  "IsGroup": false,
+                  "AddressingMode": "",
+                  "SenderAlt": "58059435028563:17@lid",
+                  "RecipientAlt": "",
+                  "BroadcastListOwner": "",
+                  "ID": "3F5DEEB366F1178BDE50",
+                  "ServerID": 0,
+                  "Type": "text",
+                  "PushName": "Jezer Portilho",
+                  "Timestamp": "2025-07-07T00:34:46Z",
+                  "Category": "",
+                  "Multicast": false,
+                  "MediaType": "",
+                  "Edit": "",
+                  "MsgBotInfo": {
+                    "EditType": "",
+                    "EditTargetID": "",
+                    "EditSenderTimestampMS": "0001-01-01T00:00:00Z"
+                  },
+                  "MsgMetaInfo": {
+                    "TargetID": "",
+                    "TargetSender": "",
+                    "DeprecatedLIDSession": null,
+                    "ThreadMessageID": "",
+                    "ThreadMessageSenderJID": ""
+                  },
+                  "VerifiedName": null,
+                  "DeviceSentMeta": null
+                },
+                "Message": {
+                  "extendedTextMessage": {
+                    "text": "ajuda",
+                    "contextInfo": {
+                      "expiration": 7776000,
+                      "ephemeralSettingTimestamp": 1655549865,
+                      "disappearingMode": {
+                        "initiator": 1
+                      }
+                    }
+                  }
+                },
+                "IsEphemeral": true,
+                "IsViewOnce": false,
+                "IsViewOnceV2": false,
+                "IsViewOnceV2Extension": false,
+                "IsDocumentWithCaption": false,
+                "IsLottieSticker": false,
+                "IsEdit": false,
+                "SourceWebMsg": null,
+                "UnavailableRequestID": "",
+                "RetryCount": 0,
+                "NewsletterMeta": null,
+                "RawMessage": {
+                  "messageContextInfo": {
+                    "deviceListMetadata": {
+                      "senderKeyHash": "YJ5t/f53ntKt1g==",
+                      "senderTimestamp": 1750596161,
+                      "recipientKeyHash": "2DWUYE7g1D/h2A==",
+                      "recipientTimestamp": 1750993252
+                    },
+                    "deviceListMetadataVersion": 2
+                  },
+                  "ephemeralMessage": {
+                    "message": {
+                      "extendedTextMessage": {
+                        "text": "ajuda",
+                        "contextInfo": {
+                          "expiration": 7776000,
+                          "ephemeralSettingTimestamp": 1655549865,
+                          "disappearingMode": {
+                            "initiator": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "Status": 3
+              }
+            },
+            "environment": {
+              "version": "2025.5.6",
+              "engine": "GOWS",
+              "tier": "CORE",
+              "browser": null
+            }
+          },
+          "webhookUrl": "http://host.docker.internal:5678/webhook-test/webhook",
+          "executionMode": "test"
+        }
+      }
+    ],
+    "Dados": [
+      {
+        "json": {
+          "session": "default",
+          "PushName": "Jezer Portilho",
+          "Chat": "5511964703712@s.whatsapp.net",
+          "id": "false_5511964703712@c.us_3F5DEEB366F1178BDE50",
+          "event": "message",
+          "fromMe": false,
+          "text": "ajuda",
+          "body": "ajuda",
+          "from": "5511964703712@c.us"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Dados",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WAHA3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WAHA": {
+      "main": [
+        [
+          {
+            "node": "WAHA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WAHA3": {
+      "main": [
+        []
+      ]
+    },
+    "WAHA1": {
+      "main": [
+        [
+          {
+            "node": "WAHA2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "WAHA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0e2de3e4-172b-41ec-9aa6-df2be7cc7080",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d95981d904c39e418b095a26b9b810db53178277f779bb1bb8009081042e0e76"
+  },
+  "id": "6fIawJxjKV6QvV9F",
+  "tags": []
+}

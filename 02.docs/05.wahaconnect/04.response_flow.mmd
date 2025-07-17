@@ -1,0 +1,9 @@
+
+sequenceDiagram
+    participant Waha
+    participant Application as App
+    Waha->>+App: POST /webhook (Nova Mensagem)
+    App->>+App: Analisar tipo de mensagem
+    App-->>-App: Extrair conteúdo e chatId
+    App->>+Waha: POST /sendText (Resposta Padrão)
+    Waha-->>-App: Confirmação de Envio

@@ -1,0 +1,10 @@
+from .A_db.db_00_supabase_config import get_supabase_client
+from .A_db.db_00_supabase_schema_config import SupabaseSchema, SupabaseTable
+from .interpretartexto.py_main_processor_v2 import process_message_logic
+from .interpretartexto.py_01_pix_generator import generate_pix
+from .interpretartexto.py_02_gemini_supabasedb_interface import main, query_gemini, supabase_crud
+from .interpretartexto.py_03_pix_status_checker import update_pix_status, check_pix_status
+from .interpretartexto.py_04_reservation_manager import check_active_reservations, check_availability, create_provisional_reservation, manage_existing_reservations, add_to_waiting_list, notify_waiting_list
+from .interpretartexto.py_05_user_registration_logic import check_user, register_user, delete_user
+from .codbackup.py_main_processor import process_message_logic as process_message
+from .codbackup.py_waha_receiver import WahaReceiver

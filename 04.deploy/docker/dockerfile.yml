@@ -1,0 +1,16 @@
+FROM n8nio/n8n:latest
+USER root
+
+# instala Python/pip
+RUN apk add --no-cache python3 py3-pip
+
+# cria e ativa um venv em /opt/venv
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# agora instala sua .whl dentro do venv
+COPY dist/resipaia*.whl /usr/local/
+RUN pip install /usr/local/resipaia*.whl
+
+# volta pro usuário n8n
+USER node

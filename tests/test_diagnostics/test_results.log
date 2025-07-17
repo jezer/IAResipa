@@ -1,0 +1,1986 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\source\IAResipa
+plugins: anyio-4.9.0, cov-6.2.1, mock-3.14.1
+collected 103 items
+
+02.docs\05.wahaconnect\test\test_waha_integration.py EEE                 [  2%]
+02.docs\05.wahaconnect\test\test_waha_receiver_concurrency.py s          [  3%]
+tests\06.interpretartexto\test_01_existing_reservation_management.py .FF [  6%]
+                                                                         [  6%]
+tests\06.interpretartexto\test_02_gemini_intelligent_responses.py ..     [  8%]
+tests\06.interpretartexto\test_03_new_user_registration.py F.F           [ 11%]
+tests\06.interpretartexto\test_06_reservation_cancellation_and_notification.py F [ 12%]
+                                                                         [ 12%]
+tests\06.interpretartexto\test_07_resource_availability.py ..            [ 14%]
+tests\06.interpretartexto\test_08_system_architecture.py ..              [ 16%]
+tests\06.interpretartexto\test_09_whatsapp_message_reception.py ..       [ 18%]
+tests\06.interpretartexto\test_10_whatsapp_reservation_system.py .       [ 19%]
+tests\06.interpretartexto\test_11_pix_confirmation_and_reservation_finalization.py . [ 20%]
+                                                                         [ 20%]
+tests\06.interpretartexto\test_12_reservation_and_pix_initiation.py .    [ 21%]
+tests\integration\test_gemini_supabase_interface.py ....                 [ 25%]
+tests\integration\test_supabase_crud.py FFFF                             [ 29%]
+tests\integration\test_supabase_tables.py FFFF                           [ 33%]
+tests\main_processor_v2_tests\test_main_processor_v2.py F.....FFFFF.     [ 44%]
+tests\resipa_lib\A_db\test_db_00_supabase_config.py ....                 [ 48%]
+tests\resipa_lib\A_db\test_db_00_supabase_schema_config.py .......       [ 55%]
+tests\resipa_lib\test_py_02_gemini_supabasedb_interface.py .........F.   [ 66%]
+tests\unit\test_py_01_pix_generator.py FFF                               [ 68%]
+tests\unit\test_py_03_pix_status_checker.py FFFFFFF                      [ 75%]
+tests\unit\test_py_04_reservation_manager.py ...........                 [ 86%]
+tests\unit\test_py_05_user_registration_logic.py .F..                    [ 90%]
+tests\unit\test_py_main_processor.py FFFFFFFFFF                          [100%]
+
+=================================== ERRORS ====================================
+_______________ ERROR at setup of test_integration_text_message _______________
+
+name = 'resipaia.py_main_processor'
+
+    def resolve(name: str) -> object:
+        # Simplified from zope.dottedname.
+        parts = name.split(".")
+    
+        used = parts.pop(0)
+        found: object = __import__(used)
+        for part in parts:
+            used += "." + part
+            try:
+                found = getattr(found, part)
+            except AttributeError:
+                pass
+            else:
+                continue
+            # We use explicit un-nesting of the handling block in order
+            # to avoid nested exceptions.
+            try:
+>               __import__(used)
+E               ModuleNotFoundError: No module named 'resipaia.py_main_processor'
+
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:77: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000029BB23708A0>
+
+    @pytest.fixture
+    def mock_process_message_logic(monkeypatch):
+        mock = MagicMock(return_value={"to": "mock_user", "message": "Resposta mockada do processador."})
+>       monkeypatch.setattr("resipaia.py_main_processor.process_message_logic", mock)
+
+02.docs\05.wahaconnect\test\test_waha_integration.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:102: in derive_importpath
+    target = resolve(module)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'resipaia.py_main_processor'
+
+    def resolve(name: str) -> object:
+        # Simplified from zope.dottedname.
+        parts = name.split(".")
+    
+        used = parts.pop(0)
+        found: object = __import__(used)
+        for part in parts:
+            used += "." + part
+            try:
+                found = getattr(found, part)
+            except AttributeError:
+                pass
+            else:
+                continue
+            # We use explicit un-nesting of the handling block in order
+            # to avoid nested exceptions.
+            try:
+                __import__(used)
+            except ImportError as ex:
+                expected = str(ex).split()[-1]
+                if expected == used:
+                    raise
+                else:
+>                   raise ImportError(f"import error in {used}: {ex}") from ex
+E                   ImportError: import error in resipaia.py_main_processor: No module named 'resipaia.py_main_processor'
+
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:83: ImportError
+---------------------------- Captured stdout setup ----------------------------
+INFO:     127.0.0.1:61419 - "GET /_clear_responses HTTP/1.1" 200 OK
+---------------------------- Captured stderr setup ----------------------------
+INFO:     Started server process [10180]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+______________ ERROR at setup of test_integration_audio_message _______________
+
+name = 'resipaia.py_main_processor'
+
+    def resolve(name: str) -> object:
+        # Simplified from zope.dottedname.
+        parts = name.split(".")
+    
+        used = parts.pop(0)
+        found: object = __import__(used)
+        for part in parts:
+            used += "." + part
+            try:
+                found = getattr(found, part)
+            except AttributeError:
+                pass
+            else:
+                continue
+            # We use explicit un-nesting of the handling block in order
+            # to avoid nested exceptions.
+            try:
+>               __import__(used)
+E               ModuleNotFoundError: No module named 'resipaia.py_main_processor'
+
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:77: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000029BB0186B10>
+
+    @pytest.fixture
+    def mock_process_message_logic(monkeypatch):
+        mock = MagicMock(return_value={"to": "mock_user", "message": "Resposta mockada do processador."})
+>       monkeypatch.setattr("resipaia.py_main_processor.process_message_logic", mock)
+
+02.docs\05.wahaconnect\test\test_waha_integration.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:102: in derive_importpath
+    target = resolve(module)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'resipaia.py_main_processor'
+
+    def resolve(name: str) -> object:
+        # Simplified from zope.dottedname.
+        parts = name.split(".")
+    
+        used = parts.pop(0)
+        found: object = __import__(used)
+        for part in parts:
+            used += "." + part
+            try:
+                found = getattr(found, part)
+            except AttributeError:
+                pass
+            else:
+                continue
+            # We use explicit un-nesting of the handling block in order
+            # to avoid nested exceptions.
+            try:
+                __import__(used)
+            except ImportError as ex:
+                expected = str(ex).split()[-1]
+                if expected == used:
+                    raise
+                else:
+>                   raise ImportError(f"import error in {used}: {ex}") from ex
+E                   ImportError: import error in resipaia.py_main_processor: No module named 'resipaia.py_main_processor'
+
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:83: ImportError
+---------------------------- Captured stdout setup ----------------------------
+INFO:     127.0.0.1:61421 - "GET /_clear_responses HTTP/1.1" 200 OK
+______________ ERROR at setup of test_integration_image_message _______________
+
+name = 'resipaia.py_main_processor'
+
+    def resolve(name: str) -> object:
+        # Simplified from zope.dottedname.
+        parts = name.split(".")
+    
+        used = parts.pop(0)
+        found: object = __import__(used)
+        for part in parts:
+            used += "." + part
+            try:
+                found = getattr(found, part)
+            except AttributeError:
+                pass
+            else:
+                continue
+            # We use explicit un-nesting of the handling block in order
+            # to avoid nested exceptions.
+            try:
+>               __import__(used)
+E               ModuleNotFoundError: No module named 'resipaia.py_main_processor'
+
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:77: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000029BB226B530>
+
+    @pytest.fixture
+    def mock_process_message_logic(monkeypatch):
+        mock = MagicMock(return_value={"to": "mock_user", "message": "Resposta mockada do processador."})
+>       monkeypatch.setattr("resipaia.py_main_processor.process_message_logic", mock)
+
+02.docs\05.wahaconnect\test\test_waha_integration.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:102: in derive_importpath
+    target = resolve(module)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'resipaia.py_main_processor'
+
+    def resolve(name: str) -> object:
+        # Simplified from zope.dottedname.
+        parts = name.split(".")
+    
+        used = parts.pop(0)
+        found: object = __import__(used)
+        for part in parts:
+            used += "." + part
+            try:
+                found = getattr(found, part)
+            except AttributeError:
+                pass
+            else:
+                continue
+            # We use explicit un-nesting of the handling block in order
+            # to avoid nested exceptions.
+            try:
+                __import__(used)
+            except ImportError as ex:
+                expected = str(ex).split()[-1]
+                if expected == used:
+                    raise
+                else:
+>                   raise ImportError(f"import error in {used}: {ex}") from ex
+E                   ImportError: import error in resipaia.py_main_processor: No module named 'resipaia.py_main_processor'
+
+C:\Program Files\Python313\Lib\site-packages\_pytest\monkeypatch.py:83: ImportError
+---------------------------- Captured stdout setup ----------------------------
+INFO:     127.0.0.1:61422 - "GET /_clear_responses HTTP/1.1" 200 OK
+================================== FAILURES ===================================
+__________ TestExistingReservationManagement.test_modify_reservation __________
+
+self = <test_01_existing_reservation_management.TestExistingReservationManagement object at 0x0000029BB2127250>
+setup_reservation_management = {'active_reservation_id': 'res_active_002', 'past_reservation_id': 'res_past_001', 'user_id': 'user_manage_001'}
+
+    def test_modify_reservation(self, setup_reservation_management):
+        """
+        Cenário: Gerenciar_ReservasExistentes (Modificação)
+        Objetivo: Validar que as modificações são aplicadas corretamente e refletidas no sistema.
+    
+        Ação Principal (Execute):
+        - Usuário tenta modificar uma reserva (data, hora, recurso).
+    
+        Validações (Assertions):
+        - Confirmar que as modificações são aplicadas corretamente e refletidas no sistema.
+        """
+        message_details = {
+            "from": setup_reservation_management['user_id'],
+            "body": f"gerenciar reservas modificar {setup_reservation_management['active_reservation_id']} nova data 2025-08-01"
+        }
+        response = process_message_logic(message_details)
+>       assert response["status"] == "success"
+E       AssertionError: assert 'info' == 'success'
+E         
+E         - success
+E         + info
+
+tests\06.interpretartexto\test_01_existing_reservation_management.py:66: AssertionError
+__________ TestExistingReservationManagement.test_cancel_reservation __________
+
+self = <test_01_existing_reservation_management.TestExistingReservationManagement object at 0x0000029BB2157E10>
+setup_reservation_management = {'active_reservation_id': 'res_active_002', 'past_reservation_id': 'res_past_001', 'user_id': 'user_manage_001'}
+
+    def test_cancel_reservation(self, setup_reservation_management):
+        """
+        Cenário: Gerenciar_ReservasExistentes (Cancelamento)
+        Objetivo: Validar que o cancelamento de reserva é processado e o status é atualizado.
+    
+        Ação Principal (Execute):
+        - Usuário tenta cancelar uma reserva.
+    
+        Validações (Assertions):
+        - Confirmar que o cancelamento de reserva é processado e o status é atualizado.
+        """
+        message_details = {
+            "from": setup_reservation_management['user_id'],
+            "body": f"cancelar {setup_reservation_management['active_reservation_id']}"
+        }
+        response = process_message_logic(message_details)
+        assert response["status"] == "success"
+>       assert f"Reserva {setup_reservation_management['active_reservation_id']} cancelada com sucesso." in response["message"]
+E       AssertionError: assert 'Reserva res_active_002 cancelada com sucesso.' in 'Sua solicitação de cancelamento foi processada com sucesso (simulado).'
+
+tests\06.interpretartexto\test_01_existing_reservation_management.py:87: AssertionError
+-------------------------- Captured stdout teardown ---------------------------
+Teardown: Reverter quaisquer modificações ou remover reservas de teste.
+______________ TestNewUserRegistration.test_register_valid_user _______________
+
+self = <test_03_new_user_registration.TestNewUserRegistration object at 0x0000029BB2127610>
+setup_user_registration = {'duplicate_email_data': {'email': 'test@example.com', 'password': 'anotherpassword'}, 'invalid_user_data': {'email': 'invalid-email', 'password': '123'}, 'valid_user_data': {'email': 'test@example.com', 'password': 'password123'}}
+
+    def test_register_valid_user(self, setup_user_registration):
+        """
+        Cenário: Registrar_NovoUsuario (Usuário Válido)
+        Objetivo: Validar que o registro com dados válidos é bem-sucedido e o usuário é criado no banco de dados.
+    
+        Ação Principal (Execute):
+        - Usuário tenta se registrar com dados válidos.
+    
+        Validações (Assertions):
+        - Confirmar que o registro com dados válidos é bem-sucedido e o usuário é criado no banco de dados.
+        """
+        message_details = {
+            "from": "+5511999999999", # Número de telefone válido para teste
+            "body": f"cadastrar {setup_user_registration['valid_user_data']['email']}"
+        }
+        response = process_message_logic(message_details)
+>       assert response["status"] == "user_not_found" # Ou "success" se o usuário já existisse
+E       AssertionError: assert 'error' == 'user_not_found'
+E         
+E         - user_not_found
+E         + error
+
+tests\06.interpretartexto\test_03_new_user_registration.py:46: AssertionError
+---------------------------- Captured stdout setup ----------------------------
+
+Setup: Configurando sistema para registro de novos usuários.
+____________ TestNewUserRegistration.test_register_duplicate_email ____________
+
+self = <test_03_new_user_registration.TestNewUserRegistration object at 0x0000029BB2264050>
+setup_user_registration = {'duplicate_email_data': {'email': 'test@example.com', 'password': 'anotherpassword'}, 'invalid_user_data': {'email': 'invalid-email', 'password': '123'}, 'valid_user_data': {'email': 'test@example.com', 'password': 'password123'}}
+
+    def test_register_duplicate_email(self, setup_user_registration):
+        """
+        Cenário: Registrar_NovoUsuario (Email Duplicado)
+        Objetivo: Validar que o registro com email duplicado é rejeitado.
+    
+        Ação Principal (Execute):
+        - Usuário tenta se registrar com email duplicado.
+    
+        Validações (Assertions):
+        - Confirmar que o registro com email duplicado é rejeitado.
+        """
+        # Primeiro, simular o registro do usuário válido para ter um email duplicado
+        message_details_valid = {
+            "from": "+5511999999999", # Número de telefone válido para teste
+            "body": f"cadastrar {setup_user_registration['valid_user_data']['email']}"
+        }
+        process_message_logic(message_details_valid)
+    
+        message_details_duplicate = {
+            "from": "+5511999999999", # Usar o mesmo número para simular duplicidade
+            "body": f"cadastrar {setup_user_registration['duplicate_email_data']['email']}"
+        }
+        response = process_message_logic(message_details_duplicate)
+        assert response["status"] == "error"
+>       assert "Falha ao cadastrar usuário" in response["message"] # Ou "Número de telefone inválido" se o email duplicado não for um número válido
+E       AssertionError: assert 'Falha ao cadastrar usuário' in 'Número de telefone inválido para cadastro. Por favor, forneça um número válido.'
+
+tests\06.interpretartexto\test_03_new_user_registration.py:94: AssertionError
+-------------------------- Captured stdout teardown ---------------------------
+Teardown: Removendo quaisquer usuários de teste criados.
+_ TestReservationCancellationAndNotification.test_cancel_reservation_and_notify_waiting_list _
+
+self = <test_06_reservation_cancellation_and_notification.TestReservationCancellationAndNotification object at 0x0000029BB2127890>
+setup_cancellation_notification = {'active_reservation_id': 'res_active_001', 'resource_with_waiting_list': 'res_wait_001', 'waiting_list_users': ['user_w1', 'user_w2']}
+
+    def test_cancel_reservation_and_notify_waiting_list(self, setup_cancellation_notification):
+        """
+        Cenário: CancelarReserva_NotificarListaEspera
+        Objetivo: Validar o fluxo de cancelamento de reserva e a notificação de usuários em lista de espera.
+    
+        Ação Principal (Execute):
+        - Usuário solicita o cancelamento de uma reserva.
+        - Sistema processa o cancelamento.
+    
+        Validações (Assertions):
+        - Confirmar que o status da reserva é atualizado para "cancelada".
+        - Confirmar que os usuários na lista de espera são notificados sobre a disponibilidade do recurso.
+        - Verificar logs para erros durante o cancelamento e notificação.
+        """
+        message_details = {
+            "from": setup_cancellation_notification['active_reservation_id'], # Usar o ID da reserva como 'from' para simular
+            "body": f"cancelar {setup_cancellation_notification['active_reservation_id']}"
+        }
+        response = process_message_logic(message_details)
+>       assert response["status"] == "info"
+E       AssertionError: assert 'success' == 'info'
+E         
+E         - info
+E         + success
+
+tests\06.interpretartexto\test_06_reservation_cancellation_and_notification.py:49: AssertionError
+---------------------------- Captured stdout setup ----------------------------
+
+Setup: Configurando ambiente para cancelamento de reserva e notificação.
+-------------------------- Captured stdout teardown ---------------------------
+Teardown: Reverter o status da reserva ou remover a reserva. Remover notificações de lista de espera.
+______________________________ test_insert_data _______________________________
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB2457950>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+>               json_obj = model_validate_json(APIErrorFromJSON, r.content)
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = <class 'postgrest.exceptions.APIErrorFromJSON'>, contents = b'{}'
+
+    def model_validate_json(model: Type[TBaseModel], contents) -> TBaseModel:
+        """Compatibility layer between pydantic 1 and 2 for parsing an instance
+        of a BaseModel from varied"""
+        try:
+            # pydantic > 2
+>           return model.model_validate_json(contents)
+E           pydantic_core._pydantic_core.ValidationError: 4 validation errors for APIErrorFromJSON
+E           message
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           code
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           hint
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           details
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\utils.py:69: ValidationError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB24F7F50>
+temp_table_name = 'test_table_c8cd1334e385437b83af7eeafb377b4d'
+
+    def test_insert_data(supabase_client: Client, temp_table_name: str):
+        """Test inserting data into a temporary Supabase table and verifying its presence."""
+        data_to_insert = {"name": "Test User", "email": "test@example.com"}
+    
+        print(f"\n[INFO] Inserting data into {temp_table_name}: {data_to_insert}")
+>       response = supabase_client.from_(temp_table_name).insert(data_to_insert).execute()
+
+tests\integration\test_supabase_crud.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB2457950>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+                json_obj = model_validate_json(APIErrorFromJSON, r.content)
+                raise APIError(dict(json_obj))
+        except ValidationError as e:
+>           raise APIError(generate_default_error_message(r))
+E           postgrest.exceptions.APIError: {'message': 'JSON could not be generated', 'code': 404, 'hint': 'Refer to full message for details', 'details': "b'{}'"}
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:80: APIError
+---------------------------- Captured stdout call -----------------------------
+
+[INFO] Inserting data into test_table_c8cd1334e385437b83af7eeafb377b4d: {'name': 'Test User', 'email': 'test@example.com'}
+-------------------------- Captured stdout teardown ---------------------------
+
+[WARNING] Could not clean up temporary table test_table_c8cd1334e385437b83af7eeafb377b4d: {'message': 'relation "public.test_table_c8cd1334e385437b83af7eeafb377b4d" does not exist', 'code': '42P01', 'hint': None, 'details': None}
+_______________________________ test_read_data ________________________________
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB1AF32F0>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+>               json_obj = model_validate_json(APIErrorFromJSON, r.content)
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = <class 'postgrest.exceptions.APIErrorFromJSON'>, contents = b'{}'
+
+    def model_validate_json(model: Type[TBaseModel], contents) -> TBaseModel:
+        """Compatibility layer between pydantic 1 and 2 for parsing an instance
+        of a BaseModel from varied"""
+        try:
+            # pydantic > 2
+>           return model.model_validate_json(contents)
+E           pydantic_core._pydantic_core.ValidationError: 4 validation errors for APIErrorFromJSON
+E           message
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           code
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           hint
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           details
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\utils.py:69: ValidationError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB24F7F50>
+temp_table_name = 'test_table_c3cfb1b6191b4032be15e52eb40efd84'
+
+    def test_read_data(supabase_client: Client, temp_table_name: str):
+        """Test reading data from a Supabase table after insertion."""
+        initial_data = [
+            {"name": "User A", "email": "user_a@example.com"},
+            {"name": "User B", "email": "user_b@example.com"}
+        ]
+    
+        print(f"\n[INFO] Inserting initial data for read test into {temp_table_name}: {initial_data}")
+>       supabase_client.from_(temp_table_name).insert(initial_data).execute()
+
+tests\integration\test_supabase_crud.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB1AF32F0>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+                json_obj = model_validate_json(APIErrorFromJSON, r.content)
+                raise APIError(dict(json_obj))
+        except ValidationError as e:
+>           raise APIError(generate_default_error_message(r))
+E           postgrest.exceptions.APIError: {'message': 'JSON could not be generated', 'code': 404, 'hint': 'Refer to full message for details', 'details': "b'{}'"}
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:80: APIError
+---------------------------- Captured stdout call -----------------------------
+
+[INFO] Inserting initial data for read test into test_table_c3cfb1b6191b4032be15e52eb40efd84: [{'name': 'User A', 'email': 'user_a@example.com'}, {'name': 'User B', 'email': 'user_b@example.com'}]
+-------------------------- Captured stdout teardown ---------------------------
+
+[WARNING] Could not clean up temporary table test_table_c3cfb1b6191b4032be15e52eb40efd84: {'message': 'relation "public.test_table_c3cfb1b6191b4032be15e52eb40efd84" does not exist', 'code': '42P01', 'hint': None, 'details': None}
+______________________________ test_update_data _______________________________
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB230B9B0>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+>               json_obj = model_validate_json(APIErrorFromJSON, r.content)
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = <class 'postgrest.exceptions.APIErrorFromJSON'>, contents = b'{}'
+
+    def model_validate_json(model: Type[TBaseModel], contents) -> TBaseModel:
+        """Compatibility layer between pydantic 1 and 2 for parsing an instance
+        of a BaseModel from varied"""
+        try:
+            # pydantic > 2
+>           return model.model_validate_json(contents)
+E           pydantic_core._pydantic_core.ValidationError: 4 validation errors for APIErrorFromJSON
+E           message
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           code
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           hint
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           details
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\utils.py:69: ValidationError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB24F7F50>
+temp_table_name = 'test_table_69bd51d6c5af4c8cae59b148f83af39e'
+
+    def test_update_data(supabase_client: Client, temp_table_name: str):
+        """Test updating data in a Supabase table and verifying the update."""
+        data_to_insert = {"name": "Old Name", "email": "update@example.com"}
+>       insert_response = supabase_client.from_(temp_table_name).insert(data_to_insert).execute()
+
+tests\integration\test_supabase_crud.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB230B9B0>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+                json_obj = model_validate_json(APIErrorFromJSON, r.content)
+                raise APIError(dict(json_obj))
+        except ValidationError as e:
+>           raise APIError(generate_default_error_message(r))
+E           postgrest.exceptions.APIError: {'message': 'JSON could not be generated', 'code': 404, 'hint': 'Refer to full message for details', 'details': "b'{}'"}
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:80: APIError
+-------------------------- Captured stdout teardown ---------------------------
+
+[WARNING] Could not clean up temporary table test_table_69bd51d6c5af4c8cae59b148f83af39e: {'message': 'relation "public.test_table_69bd51d6c5af4c8cae59b148f83af39e" does not exist', 'code': '42P01', 'hint': None, 'details': None}
+______________________________ test_delete_data _______________________________
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB230A470>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+>               json_obj = model_validate_json(APIErrorFromJSON, r.content)
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = <class 'postgrest.exceptions.APIErrorFromJSON'>, contents = b'{}'
+
+    def model_validate_json(model: Type[TBaseModel], contents) -> TBaseModel:
+        """Compatibility layer between pydantic 1 and 2 for parsing an instance
+        of a BaseModel from varied"""
+        try:
+            # pydantic > 2
+>           return model.model_validate_json(contents)
+E           pydantic_core._pydantic_core.ValidationError: 4 validation errors for APIErrorFromJSON
+E           message
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           code
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           hint
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+E           details
+E             Field required [type=missing, input_value={}, input_type=dict]
+E               For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\utils.py:69: ValidationError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB24F7F50>
+temp_table_name = 'test_table_82efcdaf60fe4a98bf42d952049ab514'
+
+    def test_delete_data(supabase_client: Client, temp_table_name: str):
+        """Test deleting data from a Supabase table and verifying its removal."""
+        data_to_insert = {"name": "To Be Deleted", "email": "delete@example.com"}
+>       insert_response = supabase_client.from_(temp_table_name).insert(data_to_insert).execute()
+
+tests\integration\test_supabase_crud.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <postgrest._sync.request_builder.SyncQueryRequestBuilder object at 0x0000029BB230A470>
+
+    def execute(self) -> APIResponse[_ReturnT]:
+        """Execute the query.
+    
+        .. tip::
+            This is the last method called, after the query is built.
+    
+        Returns:
+            :class:`APIResponse`
+    
+        Raises:
+            :class:`APIError` If the API raised an error.
+        """
+        r = self.session.request(
+            self.http_method,
+            self.path,
+            json=self.json,
+            params=self.params,
+            headers=self.headers,
+        )
+        try:
+            if r.is_success:
+                if self.http_method != "HEAD":
+                    body = r.text
+                    if self.headers.get("Accept") == "text/csv":
+                        return body
+                    if self.headers.get(
+                        "Accept"
+                    ) and "application/vnd.pgrst.plan" in self.headers.get("Accept"):
+                        if "+json" not in self.headers.get("Accept"):
+                            return body
+                return APIResponse[_ReturnT].from_http_request_response(r)
+            else:
+                json_obj = model_validate_json(APIErrorFromJSON, r.content)
+                raise APIError(dict(json_obj))
+        except ValidationError as e:
+>           raise APIError(generate_default_error_message(r))
+E           postgrest.exceptions.APIError: {'message': 'JSON could not be generated', 'code': 404, 'hint': 'Refer to full message for details', 'details': "b'{}'"}
+
+C:\Program Files\Python313\Lib\site-packages\postgrest\_sync\request_builder.py:80: APIError
+-------------------------- Captured stdout teardown ---------------------------
+
+[WARNING] Could not clean up temporary table test_table_82efcdaf60fe4a98bf42d952049ab514: {'message': 'relation "public.test_table_82efcdaf60fe4a98bf42d952049ab514" does not exist', 'code': '42P01', 'hint': None, 'details': None}
+________ test_table_exists_and_is_accessible[cadastro_pessoas_fisica] _________
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'cadastro_pessoas_fisica'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+>           assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+
+tests\integration\test_supabase_tables.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = APIResponse[TypeVar](data=[{'id': '25ed8836-493f-482c-b103-955d41b93a6e', 'phone_number': '5511999999999', 'name': 'Us...com', 'created_at': '2025-07-14T03:17:03.362154+00:00', 'updated_at': '2025-07-14T03:17:03.362154+00:00'}], count=None)
+item = 'status_code'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+C:\Program Files\Python313\Lib\site-packages\pydantic\main.py:991: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'cadastro_pessoas_fisica'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+            assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+    
+            print(f"\n[INFO] Tabela '{table_name}' acessível com sucesso.")
+    
+        except Exception as e:
+>           pytest.fail(f"Erro ao acessar a tabela '{table_name}': {e}")
+E           Failed: Erro ao acessar a tabela 'cadastro_pessoas_fisica': 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+tests\integration\test_supabase_tables.py:46: Failed
+________________ test_table_exists_and_is_accessible[recursos] ________________
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'recursos'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+>           assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+
+tests\integration\test_supabase_tables.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = APIResponse[TypeVar](data=[{'id': '6299ba05-cf13-4511-8877-0a5c4501e78c', 'name': 'Quiosque Teste A', 'type': 'quiosqu...True, 'created_at': '2025-07-14T03:17:03.362154+00:00', 'updated_at': '2025-07-14T03:17:03.362154+00:00'}], count=None)
+item = 'status_code'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+C:\Program Files\Python313\Lib\site-packages\pydantic\main.py:991: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'recursos'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+            assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+    
+            print(f"\n[INFO] Tabela '{table_name}' acessível com sucesso.")
+    
+        except Exception as e:
+>           pytest.fail(f"Erro ao acessar a tabela '{table_name}': {e}")
+E           Failed: Erro ao acessar a tabela 'recursos': 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+tests\integration\test_supabase_tables.py:46: Failed
+________________ test_table_exists_and_is_accessible[reservas] ________________
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'reservas'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+>           assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+
+tests\integration\test_supabase_tables.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = APIResponse[TypeVar](data=[], count=None), item = 'status_code'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+C:\Program Files\Python313\Lib\site-packages\pydantic\main.py:991: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'reservas'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+            assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+    
+            print(f"\n[INFO] Tabela '{table_name}' acessível com sucesso.")
+    
+        except Exception as e:
+>           pytest.fail(f"Erro ao acessar a tabela '{table_name}': {e}")
+E           Failed: Erro ao acessar a tabela 'reservas': 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+tests\integration\test_supabase_tables.py:46: Failed
+______________ test_table_exists_and_is_accessible[lista_espera] ______________
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'lista_espera'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+>           assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+
+tests\integration\test_supabase_tables.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = APIResponse[TypeVar](data=[], count=None), item = 'status_code'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+C:\Program Files\Python313\Lib\site-packages\pydantic\main.py:991: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+supabase_client = <supabase._sync.client.SyncClient object at 0x0000029BB228DD90>
+table_name = 'lista_espera'
+
+    @pytest.mark.parametrize("table_name", EXPECTED_TABLES)
+    def test_table_exists_and_is_accessible(supabase_client, table_name):
+        """Testa se cada tabela esperada existe e é acessível no Supabase."""
+        try:
+            # Tenta fazer uma consulta simples para verificar a existência da tabela
+            # Limita a 1 registro para evitar carregar muitos dados
+            response = supabase_client.from_(table_name).select("*").limit(1).execute()
+    
+            # Verifica se a resposta não contém erros de tabela inexistente ou permissão
+            assert response.data is not None, f"Tabela '{table_name}' não retornou dados ou não existe."
+            # O status code 200 (OK) ou 204 (No Content) indica sucesso na requisição
+            assert response.status_code in [200, 204], f"Erro ao acessar a tabela '{table_name}': Status {response.status_code}"
+    
+            print(f"\n[INFO] Tabela '{table_name}' acessível com sucesso.")
+    
+        except Exception as e:
+>           pytest.fail(f"Erro ao acessar a tabela '{table_name}': {e}")
+E           Failed: Erro ao acessar a tabela 'lista_espera': 'APIResponse[TypeVar]' object has no attribute 'status_code'
+
+tests\integration\test_supabase_tables.py:46: Failed
+__________________________ test_user_not_registered ___________________________
+
+    def test_user_not_registered():
+        unique_phone_number = f"5511999999999{datetime.now().strftime('%f')}"
+        message_details = {
+            "from": unique_phone_number + "@c.us",
+            "body": "Olá",
+            "type": "text"
+        }
+        response = process_message_logic(message_details)
+>       assert "Olá! Parece que você não está cadastrado. Por favor, faça seu cadastro para continuar." in response["message"]
+E       assert 'Olá! Parece que você não está cadastrado. Por favor, faça seu cadastro para continuar.' in "Olá! Parece que você não está cadastrado. Para se cadastrar, digite 'cadastrar' seguido do seu nome."
+
+tests\main_processor_v2_tests\test_main_processor_v2.py:43: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor_v2.py:20 Processando verificação/cadastro para usuário: 5511999999999128048
+INFO     root:db_00_supabase_config.py:33 Cliente Supabase criado com sucesso.
+INFO     root:py_05_user_registration_logic.py:11 Verificando usuário: 5511999999999128048
+INFO     httpx:_client.py:1025 HTTP Request: GET https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica?select=id%2Cphone_number&phone_number=eq.5511999999999128048 "HTTP/2 200 OK"
+_______________ test_check_active_reservations_no_reservations ________________
+
+    def test_check_active_reservations_no_reservations():
+        message_details = {
+            "from": "5511999999999@c.us",
+            "body": "minhas reservas",
+            "type": "text"
+        }
+        response = process_message_logic(message_details)
+>       assert "Você não possui reservas ativas no momento." in response["message"]
+E       AssertionError: assert 'Você não possui reservas ativas no momento.' in 'Suas reservas: (simulado)'
+
+tests\main_processor_v2_tests\test_main_processor_v2.py:130: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor_v2.py:145 Gerenciando reservas para 5511999999999: minhas reservas
+INFO     root:db_00_supabase_config.py:33 Cliente Supabase criado com sucesso.
+____________________ test_check_availability_no_resources _____________________
+
+    def test_check_availability_no_resources():
+        message_details = {
+            "from": "5511999999999@c.us",
+            "body": "opções disponíveis",
+            "type": "text"
+        }
+        response = process_message_logic(message_details)
+>       assert "Nenhum recurso disponível no momento." in response["message"]
+E       assert 'Nenhum recurso disponível no momento.' in "Entendi sua pergunta: 'opções disponíveis'. No momento, estou focado em reservas e pagamentos. Posso ajudar com isso?"
+
+tests\main_processor_v2_tests\test_main_processor_v2.py:142: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor_v2.py:126 Consultando Gemini com prompt: opções disponíveis
+_________________ test_create_provisional_reservation_success _________________
+
+    def test_create_provisional_reservation_success():
+        message_details = {
+            "from": "5511999999999@c.us",
+            "body": "reservar quiosque A",
+            "type": "text"
+        }
+        response = process_message_logic(message_details)
+>       assert "Sua reserva provisória foi criada com sucesso!" in response["message"]
+E       AssertionError: assert 'Sua reserva provisória foi criada com sucesso!' in 'Sua solicitação de reserva foi recebida e está sendo processada (simulado). Em breve você receberá os detalhes para pagamento.'
+
+tests\main_processor_v2_tests\test_main_processor_v2.py:154: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor_v2.py:62 Processando solicitação de reserva para: 5511999999999 - reservar quiosque a
+INFO     root:db_00_supabase_config.py:33 Cliente Supabase criado com sucesso.
+INFO     root:py_main_processor_v2.py:83 Simulando criação de reserva provisória para: 5511999999999
+______________________ test_add_to_waiting_list_success _______________________
+
+    def test_add_to_waiting_list_success():
+        message_details = {
+            "from": "5511999999999@c.us",
+            "body": "entrar em lista de espera para quiosque B",
+            "type": "text"
+        }
+        response = process_message_logic(message_details)
+>       assert "Você foi adicionado à lista de espera." in response["message"]
+E       assert 'Você foi adicionado à lista de espera.' in "Entendi sua pergunta: 'entrar em lista de espera para quiosque B'. No momento, estou focado em reservas e pagamentos. Posso ajudar com isso?"
+
+tests\main_processor_v2_tests\test_main_processor_v2.py:166: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor_v2.py:126 Consultando Gemini com prompt: entrar em lista de espera para quiosque B
+____________________ test_unrecognized_reservation_message ____________________
+
+    def test_unrecognized_reservation_message():
+        message_details = {
+            "from": "5511999999999@c.us",
+            "body": "quero agendar",
+            "type": "text"
+        }
+        response = process_message_logic(message_details)
+>       assert "Não entendi sua solicitação de reserva. Por favor, tente novamente com mais detalhes." in response["message"]
+E       assert 'Não entendi sua solicitação de reserva. Por favor, tente novamente com mais detalhes.' in "Entendi sua pergunta: 'quero agendar'. No momento, estou focado em reservas e pagamentos. Posso ajudar com isso?"
+
+tests\main_processor_v2_tests\test_main_processor_v2.py:178: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor_v2.py:126 Consultando Gemini com prompt: quero agendar
+_______________________ test_main_supabase_crud_insert ________________________
+
+mock_sys_argv = ['C:\\Program Files\\Python313\\Scripts\\pytest', '--supabase-crud', 'insert', 'recursos', '{"name": "Test Resource", "type": "test", "capacity": 1}']
+mock_print = <MagicMock name='print' id='2867733127456'>
+
+    def test_main_supabase_crud_insert(mock_sys_argv, mock_print):
+        data = {"name": "Test Resource", "type": "test", "capacity": 1}
+        mock_sys_argv.extend(["--supabase-crud", "insert", "recursos", json.dumps(data)])
+        main()
+        mock_print.assert_called_once()
+        response = json.loads(mock_print.call_args[0][0])
+>       assert response["status"] == "success"
+E       AssertionError: assert 'error' == 'success'
+E         
+E         - success
+E         + error
+
+tests\resipa_lib\test_py_02_gemini_supabasedb_interface.py:109: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:db_00_supabase_config.py:33 Cliente Supabase criado com sucesso.
+INFO     root:py_02_gemini_supabasedb_interface.py:23 Ação Supabase: insert na tabela recursos. Dados: {'name': 'Test Resource', 'type': 'test', 'capacity': 1}, Query: None
+INFO     httpx:_client.py:1025 HTTP Request: POST https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/recursos "HTTP/2 409 Conflict"
+ERROR    root:py_02_gemini_supabasedb_interface.py:61 Erro na operação Supabase insert: {'message': 'duplicate key value violates unique constraint "recursos_name_key"', 'code': '23505', 'hint': None, 'details': 'Key (name)=(Test Resource) already exists.'}
+___________________________ test_generate_pix_basic ___________________________
+
+mock_supabase_client = <MagicMock id='2867733121408'>
+
+    def test_generate_pix_basic(mock_supabase_client):
+        message_details = {
+            "amount": 100.50,
+            "description": "Reserva de Quadra",
+            "reservation_id": "RES001"
+        }
+    
+        response = generate_pix(mock_supabase_client, message_details)
+    
+>       assert response["status"] == "success"
+E       AssertionError: assert 'error' == 'success'
+E         
+E         - success
+E         + error
+
+tests\unit\test_py_01_pix_generator.py:18: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_01_pix_generator.py:11 Simulando geração de Pix. Detalhes recebidos: {'amount': 100.5, 'description': 'Reserva de Quadra', 'reservation_id': 'RES001'}
+_________________________ test_generate_pix_no_amount _________________________
+
+mock_supabase_client = <MagicMock id='2867733125440'>
+
+    def test_generate_pix_no_amount(mock_supabase_client):
+        message_details = {
+            "description": "Reserva de Quiosque",
+            "reservation_id": "RES002"
+        }
+    
+        response = generate_pix(mock_supabase_client, message_details)
+    
+>       assert response["status"] == "success"
+E       AssertionError: assert 'error' == 'success'
+E         
+E         - success
+E         + error
+
+tests\unit\test_py_01_pix_generator.py:32: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_01_pix_generator.py:11 Simulando geração de Pix. Detalhes recebidos: {'description': 'Reserva de Quiosque', 'reservation_id': 'RES002'}
+_____________________ test_generate_pix_no_reservation_id _____________________
+
+mock_supabase_client = <MagicMock id='2867733125776'>
+
+    def test_generate_pix_no_reservation_id(mock_supabase_client):
+        message_details = {
+            "amount": 50.00,
+            "description": "Pagamento"
+        }
+    
+        response = generate_pix(mock_supabase_client, message_details)
+    
+>       assert response["status"] == "success"
+E       AssertionError: assert 'error' == 'success'
+E         
+E         - success
+E         + error
+
+tests\unit\test_py_01_pix_generator.py:44: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_01_pix_generator.py:11 Simulando geração de Pix. Detalhes recebidos: {'amount': 50.0, 'description': 'Pagamento'}
+_______________________ test_update_pix_status_success ________________________
+
+self = <MagicMock name='mock.table' id='2867732366736'>, args = ('reservas',)
+kwargs = {}, expected = "table('reservas')", actual = 'not called.'
+error_message = "expected call not found.\nExpected: table('reservas')\n  Actual: not called."
+
+    def assert_called_with(self, /, *args, **kwargs):
+        """assert that the last call was made with the specified arguments.
+    
+        Raises an AssertionError if the args and keyword args passed in are
+        different to the last call to the mock."""
+        if self.call_args is None:
+            expected = self._format_mock_call_signature(args, kwargs)
+            actual = 'not called.'
+            error_message = ('expected call not found.\nExpected: %s\n  Actual: %s'
+                    % (expected, actual))
+>           raise AssertionError(error_message)
+E           AssertionError: expected call not found.
+E           Expected: table('reservas')
+E             Actual: not called.
+
+C:\Program Files\Python313\Lib\unittest\mock.py:970: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+mock_supabase_client = <MagicMock id='2867733127120'>
+
+    def test_update_pix_status_success(mock_supabase_client):
+        message_details = {"txid": "TXID123", "status": "paid"}
+    
+        # Mock do execute().data
+        mock_supabase_client.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [{'id': 'some_uuid', 'pix_txid': 'TXID123', 'status': 'paid'}]
+    
+        response = update_pix_status(mock_supabase_client, message_details)
+    
+>       mock_supabase_client.table.assert_called_with('reservas')
+E       AssertionError: expected call not found.
+E       Expected: table('reservas')
+E         Actual: not called.
+
+tests\unit\test_py_03_pix_status_checker.py:17: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_03_pix_status_checker.py:12 Simulando atualização de status do Pix TXID123 para paid. Integração desativada.
+____________________ test_update_pix_status_no_reservation ____________________
+
+mock_supabase_client = <MagicMock id='2867733125776'>
+
+    def test_update_pix_status_no_reservation(mock_supabase_client):
+        message_details = {"txid": "TXID456", "status": "paid"}
+    
+        # Mock do execute().data para retornar vazio (nenhuma reserva encontrada)
+        mock_supabase_client.table.return_value.update.return_value.eq.return_value.execute.return_value.data = []
+    
+        response = update_pix_status(mock_supabase_client, message_details)
+    
+        assert response["status"] == "error"
+>       assert "não encontrada" in response["message"]
+E       AssertionError: assert 'não encontrada' in 'A atualização do status do Pix TXID456 está temporariamente desativada. Status solicitado: paid.'
+
+tests\unit\test_py_03_pix_status_checker.py:34: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_03_pix_status_checker.py:12 Simulando atualização de status do Pix TXID456 para paid. Integração desativada.
+______________________ test_update_pix_status_exception _______________________
+
+mock_supabase_client = <MagicMock id='2867735312912'>
+
+    def test_update_pix_status_exception(mock_supabase_client):
+        message_details = {"txid": "TXID789", "status": "paid"}
+    
+        # Simula uma exceção durante a execução
+        mock_supabase_client.table.return_value.update.return_value.eq.return_value.execute.side_effect = Exception("Erro de conexão")
+    
+        response = update_pix_status(mock_supabase_client, message_details)
+    
+        assert response["status"] == "error"
+>       assert "Erro de conexão" in response["message"]
+E       AssertionError: assert 'Erro de conexão' in 'A atualização do status do Pix TXID789 está temporariamente desativada. Status solicitado: paid.'
+
+tests\unit\test_py_03_pix_status_checker.py:45: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_03_pix_status_checker.py:12 Simulando atualização de status do Pix TXID789 para paid. Integração desativada.
+_________________________ test_check_pix_status_paid __________________________
+
+self = <MagicMock name='mock.table' id='2867735311904'>, args = ('reservas',)
+kwargs = {}, expected = "table('reservas')", actual = 'not called.'
+error_message = "expected call not found.\nExpected: table('reservas')\n  Actual: not called."
+
+    def assert_called_with(self, /, *args, **kwargs):
+        """assert that the last call was made with the specified arguments.
+    
+        Raises an AssertionError if the args and keyword args passed in are
+        different to the last call to the mock."""
+        if self.call_args is None:
+            expected = self._format_mock_call_signature(args, kwargs)
+            actual = 'not called.'
+            error_message = ('expected call not found.\nExpected: %s\n  Actual: %s'
+                    % (expected, actual))
+>           raise AssertionError(error_message)
+E           AssertionError: expected call not found.
+E           Expected: table('reservas')
+E             Actual: not called.
+
+C:\Program Files\Python313\Lib\unittest\mock.py:970: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+mock_supabase_client = <MagicMock id='2867735312576'>
+
+    def test_check_pix_status_paid(mock_supabase_client):
+        message_details = {"txid": "TXID101"}
+    
+        # Mock do execute().data para retornar status 'paid'
+        mock_supabase_client.table.return_value.select.return_value.eq.return_value.single.return_value.execute.return_value.data = {'status': 'paid'}
+    
+        response = check_pix_status(mock_supabase_client, message_details)
+    
+>       mock_supabase_client.table.assert_called_with('reservas')
+E       AssertionError: expected call not found.
+E       Expected: table('reservas')
+E         Actual: not called.
+
+tests\unit\test_py_03_pix_status_checker.py:55: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_03_pix_status_checker.py:25 Simulando verificação de status do Pix TXID101. Integração desativada.
+________________________ test_check_pix_status_pending ________________________
+
+mock_supabase_client = <MagicMock id='2867757450640'>
+
+    def test_check_pix_status_pending(mock_supabase_client):
+        message_details = {"txid": "TXID102"}
+    
+        # Mock do execute().data para retornar status 'pending'
+        mock_supabase_client.table.return_value.select.return_value.eq.return_value.single.return_value.execute.return_value.data = {'status': 'pending'}
+    
+        response = check_pix_status(mock_supabase_client, message_details)
+    
+>       assert response["status"] == "success"
+E       AssertionError: assert 'error' == 'success'
+E         
+E         - success
+E         + error
+
+tests\unit\test_py_03_pix_status_checker.py:72: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_03_pix_status_checker.py:25 Simulando verificação de status do Pix TXID102. Integração desativada.
+_______________________ test_check_pix_status_not_found _______________________
+
+mock_supabase_client = <MagicMock id='2867757454336'>
+
+    def test_check_pix_status_not_found(mock_supabase_client):
+        message_details = {"txid": "TXID103"}
+    
+        # Mock do execute().data para retornar None (reserva não encontrada)
+        mock_supabase_client.table.return_value.select.return_value.eq.return_value.single.return_value.execute.return_value.data = None
+    
+        response = check_pix_status(mock_supabase_client, message_details)
+    
+        assert response["status"] == "error"
+>       assert "não encontrada" in response["message"]
+E       AssertionError: assert 'não encontrada' in 'A verificação do status do Pix TXID103 está temporariamente desativada.'
+
+tests\unit\test_py_03_pix_status_checker.py:85: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_03_pix_status_checker.py:25 Simulando verificação de status do Pix TXID103. Integração desativada.
+_______________________ test_check_pix_status_exception _______________________
+
+mock_supabase_client = <MagicMock id='2867757458032'>
+
+    def test_check_pix_status_exception(mock_supabase_client):
+        message_details = {"txid": "TXID104"}
+    
+        # Simula uma exceção durante a execução
+        mock_supabase_client.table.return_value.select.return_value.eq.return_value.single.return_value.execute.side_effect = Exception("Erro de rede")
+    
+        response = check_pix_status(mock_supabase_client, message_details)
+    
+        assert response["status"] == "error"
+>       assert "Erro de rede" in response["message"]
+E       AssertionError: assert 'Erro de rede' in 'A verificação do status do Pix TXID104 está temporariamente desativada.'
+
+tests\unit\test_py_03_pix_status_checker.py:96: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_03_pix_status_checker.py:25 Simulando verificação de status do Pix TXID104. Integração desativada.
+__________________________ test_check_user_not_found __________________________
+
+mock_supabase_client = <MagicMock id='2867758797488'>
+
+    def test_check_user_not_found(mock_supabase_client):
+        message_details = {"from": "+5511999997777"}
+        mock_supabase_client.table.return_value.select.return_value.eq.return_value.single.return_value.execute.return_value.data = None
+    
+        response = check_user(mock_supabase_client, message_details)
+    
+>       assert response["status"] == "user_not_found"
+E       AssertionError: assert 'user_found' == 'user_not_found'
+E         
+E         - user_not_found
+E         ?     ----
+E         + user_found
+
+tests\unit\test_py_05_user_registration_logic.py:27: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_05_user_registration_logic.py:11 Verificando usuário: +5511999997777
+__________________________ test_process_message_ola ___________________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB3BEB8C0>
+mock_message_details = {'body': 'olá', 'from': '123456789', 'text': 'olá'}
+
+    def test_process_message_ola(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_user_check', return_value={"to": "123456789", "message": "Verificação de usuário em andamento."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "olá"
+        message_details["text"] = "olá"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_user_check.assert_called_once_with({"from": "123456789", "body": "olá", "text": "olá"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:22: NameError
+________________________ test_process_message_reservar ________________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB2383610>
+mock_message_details = {'body': 'quero reservar', 'from': '123456789', 'text': 'quero reservar'}
+
+    def test_process_message_reservar(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_reservation', return_value={"to": "123456789", "message": "Processando sua solicitação de reserva."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "quero reservar"
+        message_details["text"] = "quero reservar"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_reservation.assert_called_once_with({"from": "123456789", "body": "quero reservar", "text": "quero reservar"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:34: NameError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor.py:42 Chamando py_02_gemini_supabasedb_interface.py para Gemini: 123456789 - quero reservar
+__________________________ test_process_message_pix ___________________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB2383ED0>
+mock_message_details = {'body': 'fazer pix', 'from': '123456789', 'text': 'fazer pix'}
+
+    def test_process_message_pix(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_pix_initiation', return_value={"to": "123456789", "message": "Iniciando processo Pix."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "fazer pix"
+        message_details["text"] = "fazer pix"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_pix_initiation.assert_called_once_with({"from": "123456789", "body": "fazer pix", "text": "fazer pix"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:46: NameError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor.py:42 Chamando py_02_gemini_supabasedb_interface.py para Gemini: 123456789 - fazer pix
+_______________________ test_process_message_status_pix _______________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB2370D60>
+mock_message_details = {'body': 'status pix', 'from': '123456789', 'text': 'status pix'}
+
+    def test_process_message_status_pix(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_pix_status_check', return_value={"to": "123456789", "message": "Verificando status Pix."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "status pix"
+        message_details["text"] = "status pix"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_pix_status_check.assert_called_once_with({"from": "123456789", "body": "status pix", "text": "status pix"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:58: NameError
+________________________ test_process_message_cancelar ________________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB2370C30>
+mock_message_details = {'body': 'cancelar reserva', 'from': '123456789', 'text': 'cancelar reserva'}
+
+    def test_process_message_cancelar(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_cancellation', return_value={"to": "123456789", "message": "Processando seu cancelamento."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "cancelar reserva"
+        message_details["text"] = "cancelar reserva"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_cancellation.assert_called_once_with({"from": "123456789", "body": "cancelar reserva", "text": "cancelar reserva"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:70: NameError
+------------------------------ Captured log call ------------------------------
+INFO     root:py_main_processor.py:42 Chamando py_02_gemini_supabasedb_interface.py para Gemini: 123456789 - cancelar reserva
+___________________ test_process_message_gerenciar_reservas ___________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB3ADB770>
+mock_message_details = {'body': 'minhas reservas', 'from': '123456789', 'text': 'minhas reservas'}
+
+    def test_process_message_gerenciar_reservas(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_manage_reservations', return_value={"to": "123456789", "message": "Gerenciando suas reservas."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "minhas reservas"
+        message_details["text"] = "minhas reservas"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_manage_reservations.assert_called_once_with({"from": "123456789", "body": "minhas reservas", "text": "minhas reservas"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:82: NameError
+_______________________ test_process_message_cadastrar ________________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB26299D0>
+mock_message_details = {'body': 'cadastrar', 'from': '123456789', 'text': 'cadastrar'}
+
+    def test_process_message_cadastrar(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_user_check', return_value={"to": "123456789", "message": "Verificação de usuário em andamento."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "cadastrar"
+        message_details["text"] = "cadastrar"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_user_check.assert_called_once_with({"from": "123456789", "body": "cadastrar", "text": "cadastrar"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:94: NameError
+____________________ test_process_message_gemini_fallback _____________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB2629D00>
+mock_message_details = {'body': 'alguma outra coisa', 'from': '123456789', 'text': 'alguma outra coisa'}
+
+    def test_process_message_gemini_fallback(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_gemini_query', return_value={"to": "123456789", "message": "Consultando Gemini."})
+    
+        message_details = mock_message_details
+        message_details["body"] = "alguma outra coisa"
+        message_details["text"] = "alguma outra coisa"
+    
+        response = process_message(message_details)
+    
+>       resipaia.codbackup.py_main_processor.handle_gemini_query.assert_called_once_with({"from": "123456789", "body": "alguma outra coisa", "text": "alguma outra coisa"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:106: NameError
+_____________________ test_process_message_no_from_number _____________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB263D350>
+mock_message_details = {'body': 'olá', 'from': '', 'text': 'olá'}
+
+    def test_process_message_no_from_number(mocker, mock_message_details):
+        message_details = mock_message_details
+        message_details["from"] = ""
+        message_details["body"] = "olá"
+        message_details["text"] = "olá"
+    
+        response = process_message(message_details)
+    
+        assert response == {"to": "error", "message": "Número de telefone do remetente não encontrado."}
+>       resipaia.codbackup.py_main_processor.handle_user_check.assert_not_called()
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:118: NameError
+_________________ test_process_message_body_and_text_handling _________________
+
+mocker = <pytest_mock.plugin.MockerFixture object at 0x0000029BB263E750>
+mock_message_details = {'body': 'Olá', 'from': '123456789@c.us', 'text': 'Olá'}
+
+    def test_process_message_body_and_text_handling(mocker, mock_message_details):
+        mocker.patch('resipaia.codbackup.py_main_processor.handle_user_check', return_value={"to": "123456789", "message": "Verificação de usuário em andamento."})
+    
+        message_details = {"from": "123456789@c.us", "body": "", "text": "olá"}
+        response = process_message(message_details)
+        assert message_details["body"] == "olá"
+        assert message_details["text"] == "olá"
+>       resipaia.codbackup.py_main_processor.handle_user_check.assert_called_once_with({"from": "123456789", "body": "olá", "text": "olá"})
+E       NameError: name 'resipaia' is not defined
+
+tests\unit\test_py_main_processor.py:133: NameError
+============================== warnings summary ===============================
+02.docs\05.wahaconnect\test\test_waha_integration.py:86
+  C:\source\IAResipa\02.docs\05.wahaconnect\test\test_waha_integration.py:86: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+02.docs\05.wahaconnect\test\test_waha_integration.py:116
+  C:\source\IAResipa\02.docs\05.wahaconnect\test\test_waha_integration.py:116: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+02.docs\05.wahaconnect\test\test_waha_integration.py:148
+  C:\source\IAResipa\02.docs\05.wahaconnect\test\test_waha_integration.py:148: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+02.docs\05.wahaconnect\test\test_waha_receiver_concurrency.py:91
+  C:\source\IAResipa\02.docs\05.wahaconnect\test\test_waha_receiver_concurrency.py:91: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+02.docs/05.wahaconnect/test/test_waha_integration.py::test_integration_text_message
+  C:\Program Files\Python313\Lib\site-packages\websockets\legacy\__init__.py:6: DeprecationWarning: websockets.legacy is deprecated; see https://websockets.readthedocs.io/en/stable/howto/upgrade.html for upgrade instructions
+    warnings.warn(  # deprecated in 14.0 - 2024-11-09
+
+02.docs/05.wahaconnect/test/test_waha_integration.py::test_integration_text_message
+  C:\Program Files\Python313\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py:17: DeprecationWarning: websockets.server.WebSocketServerProtocol is deprecated
+    from websockets.server import WebSocketServerProtocol
+
+02.docs/05.wahaconnect/test/test_waha_receiver_concurrency.py::test_concurrency_with_multiple_messages
+  C:\Program Files\Python313\Lib\site-packages\_pytest\threadexception.py:82: PytestUnhandledThreadExceptionWarning: Exception in thread Thread-4 (start_server)
+  
+  Traceback (most recent call last):
+    File "C:\Program Files\Python313\Lib\site-packages\uvicorn\server.py", line 164, in startup
+      server = await loop.create_server(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+      ...<5 lines>...
+      )
+      ^
+    File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 1622, in create_server
+      raise OSError(err.errno, msg) from None
+  OSError: [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8000): [winerror 10048] normalmente é permitida apenas uma utilização de cada endereço de soquete (protocolo/endereço de rede/porta)
+  
+  During handling of the above exception, another exception occurred:
+  
+  Traceback (most recent call last):
+    File "C:\Program Files\Python313\Lib\threading.py", line 1043, in _bootstrap_inner
+      self.run()
+      ~~~~~~~~^^
+    File "C:\Program Files\Python313\Lib\threading.py", line 994, in run
+      self._target(*self._args, **self._kwargs)
+      ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\source\IAResipa\03.src\resipaia\codbackup\py_waha_receiver.py", line 189, in start_server
+      uvicorn.run(self.app, host=self.host, port=self.port)
+      ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Program Files\Python313\Lib\site-packages\uvicorn\main.py", line 580, in run
+      server.run()
+      ~~~~~~~~~~^^
+    File "C:\Program Files\Python313\Lib\site-packages\uvicorn\server.py", line 67, in run
+      return asyncio.run(self.serve(sockets=sockets))
+             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Program Files\Python313\Lib\asyncio\runners.py", line 195, in run
+      return runner.run(main)
+             ~~~~~~~~~~^^^^^^
+    File "C:\Program Files\Python313\Lib\asyncio\runners.py", line 118, in run
+      return self._loop.run_until_complete(task)
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+    File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+      self.run_forever()
+      ~~~~~~~~~~~~~~~~^^
+    File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+      self._run_once()
+      ~~~~~~~~~~~~~~^^
+    File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 2042, in _run_once
+      handle._run()
+      ~~~~~~~~~~~^^
+    File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+      self._context.run(self._callback, *self._args)
+      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Program Files\Python313\Lib\site-packages\uvicorn\server.py", line 71, in serve
+      await self._serve(sockets)
+    File "C:\Program Files\Python313\Lib\site-packages\uvicorn\server.py", line 86, in _serve
+      await self.startup(sockets=sockets)
+    File "C:\Program Files\Python313\Lib\site-packages\uvicorn\server.py", line 174, in startup
+      sys.exit(1)
+      ~~~~~~~~^^^
+  SystemExit: 1
+  
+    warnings.warn(pytest.PytestUnhandledThreadExceptionWarning(msg))
+
+02.docs/05.wahaconnect/test/test_waha_receiver_concurrency.py::test_concurrency_with_multiple_messages
+  C:\Program Files\Python313\Lib\site-packages\_pytest\python.py:148: PytestUnhandledCoroutineWarning: async def functions are not natively supported and have been skipped.
+  You need to install a suitable plugin for your async framework, for example:
+    - anyio
+    - pytest-asyncio
+    - pytest-tornasync
+    - pytest-trio
+    - pytest-twisted
+    warnings.warn(PytestUnhandledCoroutineWarning(msg.format(nodeid)))
+
+tests/06.interpretartexto/test_07_resource_availability.py: 1 warning
+tests/06.interpretartexto/test_09_whatsapp_message_reception.py: 2 warnings
+tests/06.interpretartexto/test_10_whatsapp_reservation_system.py: 2 warnings
+tests/integration/test_gemini_supabase_interface.py: 1 warning
+tests/integration/test_supabase_crud.py: 1 warning
+tests/integration/test_supabase_tables.py: 1 warning
+tests/main_processor_v2_tests/test_main_processor_v2.py: 7 warnings
+tests/resipa_lib/test_py_02_gemini_supabasedb_interface.py: 1 warning
+  C:\Program Files\Python313\Lib\site-packages\supabase\_sync\client.py:303: DeprecationWarning: The 'timeout' parameter is deprecated. Please configure it in the http client instead.
+    return SyncPostgrestClient(
+
+tests/06.interpretartexto/test_07_resource_availability.py: 1 warning
+tests/06.interpretartexto/test_09_whatsapp_message_reception.py: 2 warnings
+tests/06.interpretartexto/test_10_whatsapp_reservation_system.py: 2 warnings
+tests/integration/test_gemini_supabase_interface.py: 1 warning
+tests/integration/test_supabase_crud.py: 1 warning
+tests/integration/test_supabase_tables.py: 1 warning
+tests/main_processor_v2_tests/test_main_processor_v2.py: 7 warnings
+tests/resipa_lib/test_py_02_gemini_supabasedb_interface.py: 1 warning
+  C:\Program Files\Python313\Lib\site-packages\supabase\_sync\client.py:303: DeprecationWarning: The 'verify' parameter is deprecated. Please configure it in the http client instead.
+    return SyncPostgrestClient(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/06.interpretartexto/test_01_existing_reservation_management.py::TestExistingReservationManagement::test_modify_reservation
+FAILED tests/06.interpretartexto/test_01_existing_reservation_management.py::TestExistingReservationManagement::test_cancel_reservation
+FAILED tests/06.interpretartexto/test_03_new_user_registration.py::TestNewUserRegistration::test_register_valid_user
+FAILED tests/06.interpretartexto/test_03_new_user_registration.py::TestNewUserRegistration::test_register_duplicate_email
+FAILED tests/06.interpretartexto/test_06_reservation_cancellation_and_notification.py::TestReservationCancellationAndNotification::test_cancel_reservation_and_notify_waiting_list
+FAILED tests/integration/test_supabase_crud.py::test_insert_data - postgrest....
+FAILED tests/integration/test_supabase_crud.py::test_read_data - postgrest.ex...
+FAILED tests/integration/test_supabase_crud.py::test_update_data - postgrest....
+FAILED tests/integration/test_supabase_crud.py::test_delete_data - postgrest....
+FAILED tests/integration/test_supabase_tables.py::test_table_exists_and_is_accessible[cadastro_pessoas_fisica]
+FAILED tests/integration/test_supabase_tables.py::test_table_exists_and_is_accessible[recursos]
+FAILED tests/integration/test_supabase_tables.py::test_table_exists_and_is_accessible[reservas]
+FAILED tests/integration/test_supabase_tables.py::test_table_exists_and_is_accessible[lista_espera]
+FAILED tests/main_processor_v2_tests/test_main_processor_v2.py::test_user_not_registered
+FAILED tests/main_processor_v2_tests/test_main_processor_v2.py::test_check_active_reservations_no_reservations
+FAILED tests/main_processor_v2_tests/test_main_processor_v2.py::test_check_availability_no_resources
+FAILED tests/main_processor_v2_tests/test_main_processor_v2.py::test_create_provisional_reservation_success
+FAILED tests/main_processor_v2_tests/test_main_processor_v2.py::test_add_to_waiting_list_success
+FAILED tests/main_processor_v2_tests/test_main_processor_v2.py::test_unrecognized_reservation_message
+FAILED tests/resipa_lib/test_py_02_gemini_supabasedb_interface.py::test_main_supabase_crud_insert
+FAILED tests/unit/test_py_01_pix_generator.py::test_generate_pix_basic - Asse...
+FAILED tests/unit/test_py_01_pix_generator.py::test_generate_pix_no_amount - ...
+FAILED tests/unit/test_py_01_pix_generator.py::test_generate_pix_no_reservation_id
+FAILED tests/unit/test_py_03_pix_status_checker.py::test_update_pix_status_success
+FAILED tests/unit/test_py_03_pix_status_checker.py::test_update_pix_status_no_reservation
+FAILED tests/unit/test_py_03_pix_status_checker.py::test_update_pix_status_exception
+FAILED tests/unit/test_py_03_pix_status_checker.py::test_check_pix_status_paid
+FAILED tests/unit/test_py_03_pix_status_checker.py::test_check_pix_status_pending
+FAILED tests/unit/test_py_03_pix_status_checker.py::test_check_pix_status_not_found
+FAILED tests/unit/test_py_03_pix_status_checker.py::test_check_pix_status_exception
+FAILED tests/unit/test_py_05_user_registration_logic.py::test_check_user_not_found
+FAILED tests/unit/test_py_main_processor.py::test_process_message_ola - NameE...
+FAILED tests/unit/test_py_main_processor.py::test_process_message_reservar - ...
+FAILED tests/unit/test_py_main_processor.py::test_process_message_pix - NameE...
+FAILED tests/unit/test_py_main_processor.py::test_process_message_status_pix
+FAILED tests/unit/test_py_main_processor.py::test_process_message_cancelar - ...
+FAILED tests/unit/test_py_main_processor.py::test_process_message_gerenciar_reservas
+FAILED tests/unit/test_py_main_processor.py::test_process_message_cadastrar
+FAILED tests/unit/test_py_main_processor.py::test_process_message_gemini_fallback
+FAILED tests/unit/test_py_main_processor.py::test_process_message_no_from_number
+FAILED tests/unit/test_py_main_processor.py::test_process_message_body_and_text_handling
+ERROR 02.docs/05.wahaconnect/test/test_waha_integration.py::test_integration_text_message
+ERROR 02.docs/05.wahaconnect/test/test_waha_integration.py::test_integration_audio_message
+ERROR 02.docs/05.wahaconnect/test/test_waha_integration.py::test_integration_image_message
+= 41 failed, 58 passed, 1 skipped, 40 warnings, 3 errors in 110.63s (0:01:50) =

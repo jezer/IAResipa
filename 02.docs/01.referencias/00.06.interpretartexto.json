@@ -1,0 +1,104 @@
+{
+  "context_name": "06.interpretartexto",
+  "description": "Mapeamento de dependências e relações entre os documentos de design, atividades e arquivos de código-fonte para o módulo de Interpretação de Texto.",
+  "relationships": [
+    {
+      "source": "02.docs/06.interpretartexto/03.objetivo/",
+      "type": "defines_objectives_for",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "Documentos nesta pasta definem os objetivos e requisitos para a interpretação de texto, que impactam a lógica do `py_main_processor_v2.py`."
+    },
+    {
+      "source": "02.docs/06.interpretartexto/04.activities/",
+      "type": "guides_development_of",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "Documentos nesta pasta detalham as atividades de desenvolvimento e teste relacionadas à interpretação de texto no `py_main_processor_v2.py`."
+    },
+    {
+      "source": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "type": "implements_logic_from",
+      "target": "02.docs/06.interpretartexto/03.objetivo/",
+      "notes": "O `py_main_processor_v2.py` implementa a lógica de interpretação de texto baseada nos objetivos definidos."
+    },
+    {
+      "source": [
+        "02.docs/06.interpretartexto/05.scenarios/09.0.system_architecture_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.1.whatsapp_message_reception_and_user_check_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.2.resource_availability_and_selection_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.3.reservation_creation_and_pix_initiation_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.4.pix_payment_confirmation_and_reservation_finalization_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.5.reservation_cancellation_and_and_waiting_list_notification_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.6.gemini_intelligent_responses_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.7.existing_reservation_management_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.8.new_user_registration_flow_scenario.md",
+        "02.docs/06.interpretartexto/05.scenarios/09.whatsapp_reservation_system_scenario.md"
+      ],
+      "type": "defines_test_scenarios_for",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "Define cenários de teste para os fluxos de uso do usuário e administrador no `py_main_processor_v2.py`."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_01_existing_reservation_management.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_04_reservation_manager.py",
+      "notes": "Contém testes automatizados para o gerenciamento de reservas existentes."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_02_gemini_intelligent_responses.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_02_gemini_supabasedb_interface.py",
+      "notes": "Contém testes automatizados para as respostas inteligentes do Gemini."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_03_new_user_registration.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_05_user_registration_logic.py",
+      "notes": "Contém testes automatizados para o fluxo de registro de novo usuário."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_11_pix_confirmation_and_reservation_finalization.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_03_pix_status_checker.py",
+      "notes": "Contém testes automatizados para a confirmação de pagamento Pix e finalização de reserva."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_12_reservation_and_pix_initiation.py",
+      "type": "automates_tests_for",
+      "target": [
+        "03.src/resipaia/interpretartexto/py_01_pix_generator.py",
+        "03.src/resipaia/interpretartexto/py_04_reservation_manager.py"
+      ],
+      "notes": "Contém testes automatizados para a criação de reserva e iniciação de pagamento Pix."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_06_reservation_cancellation_and_notification.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_04_reservation_manager.py",
+      "notes": "Contém testes automatizados para o cancelamento de reserva e notificação de lista de espera."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_07_resource_availability.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_04_reservation_manager.py",
+      "notes": "Contém testes automatizados para a verificação e seleção de disponibilidade de recursos."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_08_system_architecture.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "Contém testes automatizados para a validação da arquitetura do sistema."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_09_whatsapp_message_reception.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "Contém testes automatizados para a recepção de mensagens WhatsApp e verificação de usuário."
+    },
+    {
+      "source": "tests/06.interpretartexto/test_10_whatsapp_reservation_system.py",
+      "type": "automates_tests_for",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "Contém testes automatizados para o sistema de reserva WhatsApp completo."
+    }
+  ]
+}

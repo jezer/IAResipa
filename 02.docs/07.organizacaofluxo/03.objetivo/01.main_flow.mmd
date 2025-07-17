@@ -1,0 +1,39 @@
+graph TD
+    A[Receber Mensagem do Usuário] --> B{Classificar Intenção};
+    B --> C{Verificar Usuário};
+    C -- Usuário Registrado --> D{Executar Lógica da Intenção};
+    C -- Usuário Não Registrado --> E[Formatar Resposta de Cadastro];
+
+    D -- check_availability --> F[Consultar Disponibilidade];
+    D -- make_reservation --> G[Criar Reserva];
+    D -- cancel_reservation --> H[Cancelar Reserva];
+    D -- check_reservations --> I[Consultar Reservas];
+    D -- join_waitlist --> J[Adicionar à Lista de Espera];
+    D -- general_query --> K[Gerar Resposta Geral];
+
+    F --> L{Formatar Resposta};
+    G --> L;
+    H --> L;
+    I --> L;
+    J --> L;
+    K --> L;
+    E --> L;
+
+    L --> M[Enviar Resposta ao Usuário];
+
+    subgraph "Lógica de Intenção"
+        F
+        G
+        H
+        I
+        J
+        K
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#ccf,stroke:#333,stroke-width:2px
+    style D fill:#cfc,stroke:#333,stroke-width:2px
+    style E fill:#ffc,stroke:#333,stroke-width:2px
+    style L fill:#ffc,stroke:#333,stroke-width:2px
+    style M fill:#f9f,stroke:#333,stroke-width:2px

@@ -1,0 +1,78 @@
+
+{
+  "context_name": "05.wahaconnect",
+  "description": "Mapeamento de dependências e relações entre os documentos de design, atividades e arquivos de código-fonte para o módulo WahaConnect.",
+  "relationships": [
+    {
+      "source": "02.docs/05.wahaconnect/01.waha_webhook_setup.md",
+      "type": "configures",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "Instruções para configurar o webhook no Waha, que aponta para o `py_waha_receiver.py`."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/02.message_reception_flow.mmd",
+      "type": "describes_flow",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "Diagrama de fluxo principal para recebimento e pré-processamento de mensagens."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/03.class_implementation_details.md",
+      "type": "defines_structure_and_methods",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "Define a estrutura da classe `WahaReceiver` e seus métodos, incluindo pré-processamento de mídia."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/04.response_flow.mmd",
+      "type": "describes_flow",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "Diagrama de fluxo para o envio de respostas de volta ao Waha."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/02.activities/01_implementation_plan.md",
+      "type": "implements_objectives_from",
+      "target": [
+        "02.docs/05.wahaconnect/01.waha_webhook_setup.md",
+        "02.docs/05.wahaconnect/02.message_reception_flow.mmd",
+        "02.docs/05.wahaconnect/03.class_implementation_details.md",
+        "02.docs/05.wahaconnect/04.response_flow.mmd"
+      ],
+      "notes": "O plano de atividades detalha as etapas para implementar os objetivos e fluxos definidos nos documentos de design."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/02.activities/01_implementation_plan.md",
+      "type": "guides_development_of",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "As atividades guiam a criação e implementação do `py_waha_receiver.py`."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/test/test_01_concurrency_strategy.md",
+      "type": "defines_test_strategy_for",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "Define a estratégia para testar a concorrência do `py_waha_receiver.py`."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/test/test_02_concurrency_test_flow.mmd",
+      "type": "describes_test_flow_for",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "Diagrama de fluxo para os testes de concorrência do `py_waha_receiver.py`."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/test/test_03_test_implementation_details.md",
+      "type": "defines_test_implementation_for",
+      "target": "03.src/resipaia/wahaconnect/py_waha_receiver_v2.py",
+      "notes": "Detalhes de implementação para os testes de concorrência do `py_waha_receiver.py`."
+    },
+    {
+      "source": "03.src/resipaia/wahaconnect/py_waha_receiver.py",
+      "type": "integrates_with",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "O `py_waha_receiver.py` irá chamar a lógica de `py_main_processor.py` após pré-processamento."
+    },
+    {
+      "source": "02.docs/05.wahaconnect/02.activities/01_implementation_plan.md",
+      "type": "guides_refactoring_of",
+      "target": "03.src/resipaia/interpretartexto/py_main_processor_v2.py",
+      "notes": "As atividades da Etapa 2.1 guiam a refatoração do `py_main_processor_v2.py` para torná-lo importável."
+    }
+  ]
+}

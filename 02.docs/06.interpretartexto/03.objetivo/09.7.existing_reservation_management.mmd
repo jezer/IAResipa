@@ -1,0 +1,31 @@
+graph TD
+    A["Usuário solicita gerenciar reservas via WhatsApp"] --> B["n8n recebe solicitação"]
+    B --> P{"Solicitação é 'gerenciar reservas' ou 'gerenciar reservas modificar/cancelar [ID]'?"}
+
+    P -- 'gerenciar reservas' (geral) --> C["n8n consulta reservas ativas do usuário no Supabase"]
+    C --> D{"Supabase retorna reservas?"}
+
+    D -- Sim --> E["n8n apresenta lista de reservas ao usuário"]
+    E --> F{"Usuário seleciona opção (Consultar/Alterar/Cancelar) ou informa ID?"}
+
+    F -- Consultar --> G["n8n exibe detalhes da reserva selecionada"]
+    G --> Z["Fim do Fluxo"]
+
+    F -- Alterar [ID] --> H["n8n solicita novos detalhes para alteração (ex: data/hora)"]
+    H --> I["n8n valida e atualiza reserva no Supabase"]
+    I --> J{"Atualização bem-sucedida?"}
+    J -- Sim --> K["n8n envia confirmação de alteração ao usuário"]
+    K --> Z
+    J -- Não --> L["n8n informa falha na alteração"]
+    L --> Z
+
+    F -- Cancelar [ID] --> M["n8n aciona fluxo de Cancelamento de Reserva (09.5)"]
+    M --> Z
+
+    D -- Não --> N["n8n informa Usuário: Nenhuma reserva encontrada"]
+    N --> Z
+
+    P -- 'gerenciar reservas modificar [ID]' --> H_direct["n8n extrai ID e solicita novos detalhes para alteração"]
+    H_direct --> I
+    P -- 'gerenciar reservas cancelar [ID]' --> M_direct["n8n extrai ID e aciona fluxo de Cancelamento de Reserva (09.5)"]
+    M_direct --> Z

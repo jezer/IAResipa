@@ -1,0 +1,233 @@
+{
+  "test_gemini_general_query": {
+    "user_id": "user_gemini_001",
+    "test_cases": [
+      {
+        "name": "general_query_response",
+        "body": "Olá, como posso reservar?",
+        "expected_status": "success",
+        "expected_message_not_empty": true
+      }
+    ]
+  },
+  "test_01_existing_reservation_management": {
+    "user_id": "user_manage_001",
+    "active_reservation_id": "res_active_002",
+    "past_reservation_id": "res_past_001",
+    "test_cases": [
+      {
+        "name": "view_all_reservations",
+        "body": "minhas reservas",
+        "expected_status": "success",
+        "expected_reservations_in_response": true
+      },
+      {
+        "name": "modify_reservation",
+        "body_template": "gerenciar reservas modificar {active_reservation_id} nova data 2025-08-01",
+        "expected_status": "success"
+      },
+      {
+        "name": "cancel_reservation",
+        "body_template": "cancelar {active_reservation_id}",
+        "expected_status": "success"
+      }
+    ]
+  },
+  "test_07_resource_availability": {
+    "available_resource_id": "res_001",
+    "unavailable_resource_id": "res_002",
+    "authenticated_user_id": "user_abc",
+    "test_cases": [
+      {
+        "name": "request_available_resource",
+        "body_template": "disponibilidade {available_resource_id} 2025-07-15 10:00",
+        "expected_status": "available",
+        "expected_message_part": "Opções disponíveis"
+      },
+      {
+        "name": "request_unavailable_resource",
+        "body_template": "reservar {unavailable_resource_id} 2025-07-15 10:00",
+        "expected_status": "info",
+        "expected_message_part": "Sua solicitação de reserva foi recebida"
+      }
+    ]
+  },
+  "test_06_reservation_cancellation_and_notification": {
+    "active_reservation_id": "res_active_001",
+    "resource_with_waiting_list": "res_wait_001",
+    "waiting_list_users": ["user_w1", "user_w2"],
+    "test_cases": [
+      {
+        "name": "cancel_reservation_and_notify_waiting_list",
+        "from_template": "{active_reservation_id}",
+        "body_template": "cancelar {active_reservation_id}",
+        "expected_status": "info",
+        "expected_message_part": "Sua solicitação de cancelamento foi processada com sucesso"
+      }
+    ]
+  },
+  "test_03_new_user_registration": {
+    "valid_user_data": {
+      "email": "test@example.com",
+      "password": "password123"
+    },
+    "invalid_user_data": {
+      "email": "invalid-email",
+      "password": "123"
+    },
+    "duplicate_email_data": {
+      "email": "test@example.com",
+      "password": "anotherpassword"
+    },
+    "test_cases": [
+      {
+        "name": "register_valid_user",
+        "from": "+5511999999999",
+        "body_template": "cadastrar {valid_user_data.email}",
+        "expected_status_options": ["user_not_found", "success"],
+        "expected_message_parts": ["não está cadastrado", "cadastrado com sucesso"]
+      },
+      {
+        "name": "register_invalid_user",
+        "from_template": "{invalid_user_data.email}",
+        "body_template": "cadastrar {invalid_user_data.email}",
+        "expected_status": "error",
+        "expected_message_part": "Número de telefone inválido"
+      },
+      {
+        "name": "register_duplicate_email",
+        "from": "+5511999999999",
+        "body_template_valid": "cadastrar {valid_user_data.email}",
+        "body_template_duplicate": "cadastrar {duplicate_email_data.email}",
+        "expected_status": "error",
+        "expected_message_part_options": ["Falha ao cadastrar usuário", "Número de telefone inválido"]
+      }
+    ]
+  },
+  "test_02_gemini_intelligent_responses": {
+    "user_number": "+1234567890",
+    "test_cases": [
+      {
+        "name": "gemini_relevant_response",
+        "body": "Qual o horário de funcionamento?",
+        "expected_status": "success",
+        "expected_message_parts": ["horário", "funcionamento"]
+      },
+      {
+        "name": "gemini_ambiguous_response",
+        "body": "Me fale sobre coisas.",
+        "expected_status": "success",
+        "expected_message_parts": ["ajudar melhor", "mais detalhes", "auxiliar"]
+      }
+    ]
+  },
+  "test_10_whatsapp_reservation_system": {
+    "test_user_number": "+1122334455",
+    "available_resource": "resource_X",
+    "test_cases": [
+      {
+        "name": "full_whatsapp_reservation_flow_step1",
+        "description": "Iniciar conversa",
+        "from": "{test_user_number}",
+        "body": "olá",
+        "expected_to": "{test_user_number}",
+        "expected_message_parts": ["Bem-vindo de volta", "não está cadastrado"]
+      },
+      {
+        "name": "full_whatsapp_reservation_flow_step2",
+        "description": "Consultar disponibilidade",
+        "from": "{test_user_number}",
+        "body_template": "disponibilidade {available_resource}",
+        "expected_status_options": ["available", "not_available"],
+        "expected_message_parts": ["Opções disponíveis", "Nenhum recurso disponível"]
+      },
+      {
+        "name": "full_whatsapp_reservation_flow_step3",
+        "description": "Selecionar recurso e horário",
+        "from": "{test_user_number}",
+        "body_template": "reservar {available_resource} dia 20/07 às 10h",
+        "expected_to": "{test_user_number}",
+        "expected_message_part": "Sua solicitação de reserva foi recebida"
+      },
+      {
+        "name": "full_whatsapp_reservation_flow_step4",
+        "description": "Iniciar Pix",
+        "from": "{test_user_number}",
+        "body": "pix",
+        "amount": 100.00,
+        "description_pix": "Reserva de recurso",
+        "expected_status": "error",
+        "expected_message_part": "temporariamente desativada"
+      },
+      {
+        "name": "full_whatsapp_reservation_flow_step5",
+        "description": "Confirmar Pix",
+        "from": "{test_user_number}",
+        "body": "status pix",
+        "txid": "simulated_txid_from_previous_step",
+        "expected_status": "error",
+        "expected_message_part": "temporariamente desativada"
+      }
+    ]
+  },
+  "test_09_whatsapp_message_reception": {
+    "registered_user_number": "+1234567890",
+    "unregistered_user_number": "+1987654321",
+    "test_cases": [
+      {
+        "name": "receive_message_from_registered_user",
+        "from": "{registered_user_number}",
+        "body": "olá",
+        "expected_to": "{registered_user_number}",
+        "expected_message_part": "não está cadastrado"
+      },
+      {
+        "name": "receive_message_from_unregistered_user",
+        "from": "{unregistered_user_number}",
+        "body": "olá",
+        "expected_to": "{unregistered_user_number}",
+        "expected_message_part": "não está cadastrado"
+      }
+    ]
+  },
+  "test_12_reservation_and_pix_initiation": {
+    "available_resource_id": "res_003",
+    "authenticated_user_id": "user_xyz",
+    "test_cases": [
+      {
+        "name": "create_reservation_and_initiate_pix",
+        "from": "{authenticated_user_id}",
+        "body": "pix",
+        "amount": 100.00,
+        "description": "Reserva de recurso",
+        "expected_status": "error",
+        "expected_message_part": "temporariamente desativada"
+      }
+    ]
+  },
+  "test_11_pix_confirmation_and_reservation_finalization": {
+    "pending_reservation_id": "res_pend_001",
+    "test_cases": [
+      {
+        "name": "pix_payment_confirmation_and_reservation_finalization",
+        "from": "+1234567890",
+        "body": "status pix",
+        "txid": "{pending_reservation_id}",
+        "expected_status": "error",
+        "expected_message_part": "temporariamente desativada"
+      }
+    ]
+  },
+  "test_08_system_architecture": {
+    "test_cases": [
+      {
+        "name": "validate_system_components",
+        "expected_status": "success"
+      },
+      {
+        "name": "validate_module_communications",
+        "expected_status": "success"
+      }
+    ]
+  }
+}

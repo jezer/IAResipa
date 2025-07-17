@@ -1,0 +1,36 @@
+{
+  "system_overview": "Sistema de reserva de quiosques e quadras de beach tennis via WhatsApp, utilizando Waha, n8n, Docker, Supabase e Gemini. Permite que usuários cadastrados realizem reservas, efetuem pagamentos via Pix e gerenciem cancelamentos com notificação de lista de espera.",
+  "main_functionalities": [
+    "Escuta e Resposta WhatsApp: Recebimento e envio de mensagens.",
+    "Gestão de Reservas: Verificação de cadastro, exibição de disponibilidade, processo de seleção de horário e recurso, confirmação da reserva mediante pagamento Pix.",
+    "Gestão de Pagamento Pix: Geração de QR Code Pix ou link de pagamento, verificação do status do pagamento.",
+    "Cancelamento e Lista de Espera: Funcionalidade para o usuário cancelar uma reserva, notificação automática do próximo da lista de espera em caso de cancelamento.",
+    "Respostas Inteligentes com Gemini: Interpretação de mensagens, consulta Supabase para informações relevantes (disponibilidade, status de reserva, etc.), geração de respostas coerentes."
+  ],
+  "gemini_role": "Interpretar as mensagens dos usuários no WhatsApp e gerar respostas inteligentes, consultando o Supabase para obter informações relevantes (disponibilidade, status de reserva, etc.). O Gemini deve atuar como um assistente amigável, formal e útil, focado nos serviços de reserva e pagamento.",
+  "key_phrases": [
+    "reservar",
+    "disponibilidade",
+    "cancelar",
+    "Pix",
+    "pagamento",
+    "reservas ativas",
+    "minhas reservas",
+    "lista de espera",
+    "quiosque",
+    "quadra",
+    "cadastro",
+    "horário de funcionamento",
+    "preço"
+  ],
+  "detailed_flows_summary": {
+    "whatsapp_message_reception_and_user_check": "Fluxo de recebimento de mensagens do WhatsApp, extração do número de telefone e consulta ao Supabase para verificar se o usuário é cadastrado. Se não for, solicita o cadastro.",
+    "resource_availability_and_selection": "Fluxo para verificar reservas ativas do usuário, apresentar opções de quiosques e quadras, consultar disponibilidade no Supabase, e permitir a seleção de recursos ou entrada em lista de espera. Inclui a iniciação do pagamento Pix para reservas provisórias.",
+    "reservation_creation_and_pix_initiation": "Fluxo de criação de reserva provisória no Supabase e acionamento de script Python para gerar dados Pix (QR Code/Link/txid). Inclui a espera pela confirmação do pagamento Pix.",
+    "pix_payment_confirmation_and_reservation_finalization": "Fluxo de recebimento da confirmação de pagamento Pix e atualização do status da reserva para 'Confirmada' no Supabase, seguido do envio da confirmação final ao usuário.",
+    "reservation_cancellation_and_waiting_list_notification": "Fluxo de solicitação de cancelamento de reserva, identificação e atualização do status no Supabase, consulta à lista de espera e notificação do próximo usuário disponível.",
+    "gemini_intelligent_responses": "Fluxo de como o Gemini recebe a pergunta do usuário, formata-a com contexto, chama a API Gemini, e processa a resposta (incluindo consultas SQL ao Supabase se necessário) para enviar uma resposta final ao usuário.",
+    "existing_reservation_management": "Fluxo para o usuário gerenciar reservas existentes, permitindo consultar, alterar ou cancelar reservas. Inclui a lógica para lidar com solicitações diretas de modificação/cancelamento por ID.",
+    "new_user_registration_flow": "Fluxo de cadastro de novos usuários, incluindo a verificação se o remetente é um administrador de cadastro, solicitação e validação do novo número, e inserção/atualização no Supabase, com envio de confirmações e boas-vindas."
+  }
+}

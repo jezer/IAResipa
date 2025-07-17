@@ -1,0 +1,28 @@
+
+graph TD
+    subgraph Test Setup
+        A[Iniciar Aplicação WahaReceiver]
+        B[Iniciar Mock da API do Waha]
+    end
+
+    subgraph Test Execution
+        C(Disparador de Teste) -->|Threads/Async| D{Enviar Múltiplas Requisições POST /webhook}
+        D -->|chatId: 1| E(App: Processa Msg 1)
+        D -->|chatId: 2| F(App: Processa Msg 2)
+        D -->|chatId: 3| G(App: Processa Msg 3)
+    end
+
+    subgraph Response Handling
+        E --> H{App: Envia Resposta 1}
+        F --> I{App: Envia Resposta 2}
+        G --> J{App: Envia Resposta 3}
+        H -->|POST /sendText| K(Mock API: Registra Resposta 1)
+        I -->|POST /sendText| L(Mock API: Registra Resposta 2)
+        J -->|POST /sendText| M(Mock API: Registra Resposta 3)
+    end
+
+    subgraph Verification
+        N[Analisar Logs do Mock API] --> O{Verificar se chatId 1, 2, 3 receberam a resposta correta}
+    end
+
+    A & B --> C --> N --> O

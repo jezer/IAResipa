@@ -1,0 +1,24 @@
+{
+  "context_name": "08.responderaoUsuario",
+  "description": "Mapeamento de dependências para o módulo de geração de respostas ao usuário com Gemini.",
+  "relationships": [
+    {
+      "source": "02.docs/08.responderaoUsuario/03.objetivo/",
+      "type": "defines_objectives_for",
+      "target": "03.src/resipaia/response_generator.py",
+      "notes": "Define os prompts, as intenções e a lógica para classificar intenções e formatar respostas."
+    },
+    {
+      "source": "02.docs/08.responderaoUsuario/04.activities/",
+      "type": "guides_development_of",
+      "target": "03.src/resipaia/response_generator.py",
+      "notes": "Detalha as atividades para implementar os nós de interação com o Gemini."
+    },
+    {
+      "source": "03.src/resipaia/response_generator.py",
+      "type": "implements_logic_from",
+      "target": "02.docs/08.responderaoUsuario/03.objetivo/",
+      "notes": "Este arquivo implementará a lógica de chamada ao Gemini, com os prompts para classificação e formatação."
+    }
+  ]
+}

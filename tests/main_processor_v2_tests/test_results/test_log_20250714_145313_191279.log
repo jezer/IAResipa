@@ -1,0 +1,13 @@
+2025-07-14 14:53:13,284 - INFO - Processando verificação/cadastro para usuário: 5511555555555284322
+2025-07-14 14:53:14,350 - INFO - Cliente Supabase criado com sucesso.
+2025-07-14 14:53:14,350 - INFO - Tentativa de cadastro de novo usuário: 5511555555555284322 por 5511555555555284322
+2025-07-14 14:53:14,350 - INFO - Registrando usuário: 5511555555555284322 com dados: {'phone_number': '5511555555555284322', 'name': 'Novo Usuário'}
+2025-07-14 14:53:16,585 - INFO - HTTP Request: POST https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica "HTTP/2 201 Created"
+2025-07-14 14:53:16,696 - INFO - Tentativa de remoção de usuário: 5511555555555284322 por admin: 5511888888888
+2025-07-14 14:53:17,532 - INFO - Cliente Supabase criado com sucesso.
+2025-07-14 14:53:17,532 - INFO - Deletando usuário: 5511555555555284322
+2025-07-14 14:53:18,723 - INFO - HTTP Request: GET https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica?select=id&phone_number=eq.5511555555555284322 "HTTP/2 200 OK"
+2025-07-14 14:53:18,801 - INFO - HTTP Request: DELETE https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/reservas?user_id=eq.a1ec8bf2-b8a2-4119-8241-03fb4bc5ce91 "HTTP/2 200 OK"
+2025-07-14 14:53:18,870 - INFO - HTTP Request: DELETE https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/lista_espera?user_id=eq.a1ec8bf2-b8a2-4119-8241-03fb4bc5ce91 "HTTP/2 200 OK"
+2025-07-14 14:53:18,924 - INFO - HTTP Request: DELETE https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica?phone_number=eq.5511555555555284322 "HTTP/2 200 OK"
+2025-07-14 14:53:18,927 - INFO - Teste 'Admin Remove Usuário' - Resposta: {'to': '5511888888888', 'status': 'success', 'message': 'Usuário 5511555555555284322 removido com sucesso!'}

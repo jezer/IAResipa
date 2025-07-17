@@ -1,0 +1,6 @@
+2025-07-14 14:47:56,486 - INFO - Processando verificação/cadastro para usuário: 5511999999999
+2025-07-14 14:47:58,705 - INFO - Cliente Supabase criado com sucesso.
+2025-07-14 14:47:58,705 - INFO - Tentativa de cadastro de novo usuário: 5511666666666486348 por 5511999999999
+2025-07-14 14:47:58,705 - INFO - Registrando usuário: 5511666666666486348 com dados: {'phone_number': '5511666666666486348', 'name': 'Novo Usuário'}
+2025-07-14 14:48:00,673 - INFO - HTTP Request: POST https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica "HTTP/2 201 Created"
+2025-07-14 14:48:00,675 - INFO - Teste 'Usuário Comum Tenta Cadastrar' - Resposta: {'to': '5511999999999', 'status': 'success', 'message': 'Usuário 5511666666666486348 cadastrado com sucesso!'}

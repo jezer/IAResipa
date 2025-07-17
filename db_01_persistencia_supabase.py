@@ -1,5 +1,5 @@
 from supabase import create_client
-from supabase_config import SUPABASE_URL, SUPABASE_KEY
+from resipa.A_db.db_00_supabase_config import SUPABASE_URL, SUPABASE_KEY
 
 class PersistenciaSupabase:
     def __init__(self):

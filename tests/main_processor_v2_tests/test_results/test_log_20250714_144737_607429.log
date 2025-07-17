@@ -1,0 +1,10 @@
+2025-07-14 14:47:37,624 - INFO - Processando verificação/cadastro para usuário: 5511999999999624316
+2025-07-14 14:47:40,185 - INFO - Cliente Supabase criado com sucesso.
+2025-07-14 14:47:40,186 - INFO - Tentativa de cadastro de novo usuário: 5511999999999624316 por 5511999999999624316
+2025-07-14 14:47:40,189 - INFO - Registrando usuário: 5511999999999624316 com dados: {'phone_number': '5511999999999624316', 'name': 'Novo Usuário'}
+2025-07-14 14:47:42,144 - INFO - HTTP Request: POST https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica "HTTP/2 201 Created"
+2025-07-14 14:47:42,146 - INFO - Processando verificação/cadastro para usuário: 5511999999999624316
+2025-07-14 14:47:46,311 - INFO - Cliente Supabase criado com sucesso.
+2025-07-14 14:47:46,311 - INFO - Verificando usuário: 5511999999999624316
+2025-07-14 14:47:50,128 - INFO - HTTP Request: GET https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica?select=id%2Cphone_number&phone_number=eq.5511999999999624316 "HTTP/2 200 OK"
+2025-07-14 14:47:50,134 - INFO - Teste 'Usuário Já Cadastrado' - Resposta: {'to': '5511999999999624316', 'status': 'user_found', 'message': 'Bem-vindo de volta, 5511999999999624316! Como posso ajudar hoje?'}

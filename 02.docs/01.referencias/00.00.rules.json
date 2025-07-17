@@ -1,0 +1,72 @@
+{
+  "context_name": "00.rules",
+  "description": "Mapeamento de dependências e relações entre os documentos de regras do projeto.",
+  "relationships": [
+    {
+      "source": "02.docs/00.rules/01.activity_management.md",
+      "type": "governs",
+      "target": "02.docs/04.activities/",
+      "notes": "Define as regras para gestão de atividades e checklists."
+    },
+    {
+      "source": "02.docs/00.rules/02.coding/00.general_python_coding_rules.md",
+      "type": "governs",
+      "target": "03.src/",
+      "notes": "Define as convenções de codificação gerais para todo o código-fonte Python, baseadas na PEP 8."
+    },
+    {
+      "source": "02.docs/00.rules/02.coding/01.python_class_creation.md",
+      "type": "governs",
+      "target": "03.src/",
+      "notes": "Define as convenções para a criação de classes e módulos em Python."
+    },
+    {
+      "source": "02.docs/00.rules/02.coding/02.python_test_class_creation.md",
+      "type": "governs",
+      "target": "tests/",
+      "notes": "Define as convenções para a criação de classes de teste com Pytest."
+    },
+    {
+      "source": "02.docs/00.rules/02.coding/03.python_test_execution_and_diagnostics.md",
+      "type": "governs",
+      "target": "tests/",
+      "notes": "Define as convenções para a execução de testes e o diagnóstico de falhas."
+    },
+    {
+      "source": "02.docs/00.rules/03.documentation_conventions.md",
+      "type": "governs",
+      "target": "02.docs/",
+      "notes": "Define as convenções para a criação e manutenção de toda a documentação."
+    },
+    {
+      "source": "02.docs/00.rules/04.folder_exceptions.md",
+      "type": "governs",
+      "target": "project_structure",
+      "notes": "Define exceções e regras especiais para a estrutura de pastas do projeto."
+    },
+    {
+      "source": "02.docs/00.rules/05.git_operations.md",
+      "type": "governs",
+      "target": ".git/",
+      "notes": "Define as regras para operações Git (commits, branches, etc.)."
+    },
+    {
+      "source": "02.docs/00.rules/06.language_and_style.md",
+      "type": "governs",
+      "target": "all_documentation",
+      "notes": "Define regras gerais de idioma e estilo para toda a documentação."
+    },
+    {
+      "source": "02.docs/00.rules/08.naming_conventions.md",
+      "type": "governs",
+      "target": "all_files_and_folders",
+      "notes": "Define as convenções de nomenclatura para arquivos, pastas e outros elementos do projeto."
+    },
+    {
+      "source": "02.docs/00.rules/09.01.scenario_generation_instructions.md",
+      "type": "governs",
+      "target": "02.docs/",
+      "notes": "Direciona a documentação de cenários de teste antes da implementação do código, dentro das pastas de documentação de blocos de código relevantes."
+    }
+  ]
+}

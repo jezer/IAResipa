@@ -1,0 +1,24 @@
+{
+  "context_name": "07.organizacaofluxo",
+  "description": "Mapeamento de dependências para o módulo de organização de fluxo de conversação com LangGraph.",
+  "relationships": [
+    {
+      "source": "02.docs/07.organizacaofluxo/03.objetivo/",
+      "type": "defines_objectives_for",
+      "target": "03.src/resipaia/flow_orchestrator.py",
+      "notes": "Define a arquitetura do grafo de estados, o gerenciamento de memória e o fluxo principal da conversa."
+    },
+    {
+      "source": "02.docs/07.organizacaofluxo/04.activities/",
+      "type": "guides_development_of",
+      "target": "03.src/resipaia/flow_orchestrator.py",
+      "notes": "Detalha as atividades para implementar o grafo, o estado e a lógica de memória persistente."
+    },
+    {
+      "source": "03.src/resipaia/flow_orchestrator.py",
+      "type": "implements_logic_from",
+      "target": "02.docs/07.organizacaofluxo/03.objetivo/",
+      "notes": "Este arquivo implementará o StateGraph, a definição do estado e a interação com o Supabase para memória."
+    }
+  ]
+}

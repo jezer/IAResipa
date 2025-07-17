@@ -1,0 +1,78 @@
+{
+  "ClassifyIntent_Success": {
+    "initial_state": {
+      "user_message": "Quero saber os quiosques disponíveis para amanhã",
+      "phone_number": "+5511999999999"
+    },
+    "mock_llm_response": {
+      "intent": "check_availability",
+      "sql_query": "SELECT * FROM quiosques WHERE data_disponivel = 'YYYY-MM-DD'",
+      "response": null
+    },
+    "expected_state": {
+      "intent": "check_availability",
+      "sql_query": "SELECT * FROM quiosques WHERE data_disponivel = 'YYYY-MM-DD'",
+      "response": null
+    }
+  },
+  "ClassifyIntent_JsonError": {
+    "initial_state": {
+      "user_message": "uma mensagem qualquer",
+      "phone_number": "+5511999999999"
+    },
+    "mock_llm_response": "{json_invalido",
+    "expected_state": {
+      "intent": "general_query",
+      "response": "Desculpe, não entendi sua solicitação. Pode esclarecer?"
+    }
+  },
+  "FormatResponse_Success": {
+    "initial_state": {
+      "intent": "check_availability",
+      "sql_result": [
+        {"nome": "Quiosque Sol", "disponivel": true},
+        {"nome": "Quiosque Lua", "disponivel": true}
+      ]
+    },
+    "mock_llm_response": "Os seguintes quiosques estão disponíveis: Quiosque Sol, Quiosque Lua. Qual você gostaria de reservar?",
+    "expected_state": {
+      "response": "Os seguintes quiosques estão disponíveis: Quiosque Sol, Quiosque Lua. Qual você gostaria de reservar?"
+    }
+  },
+  "Routing_RegisteredUser": {
+    "initial_state": {
+        "user_message": "qual a disponibilidade de quadras?",
+        "phone_number": "+5511987654321"
+    },
+    "mock_classify_intent": {
+        "intent": "check_availability"
+    },
+    "mock_check_user": {
+        "is_registered": true,
+        "user_id": 456
+    },
+    "expected_state": {
+        "intent": "check_availability",
+        "is_registered": true,
+        "user_id": 456,
+        "response_contains": "Resposta formatada para:"
+    }
+  },
+  "Routing_UnregisteredUser": {
+    "initial_state": {
+        "user_message": "qual a disponibilidade de quadras?",
+        "phone_number": "+5511987654321"
+    },
+    "mock_classify_intent": {
+        "intent": "check_availability"
+    },
+    "mock_check_user": {
+        "is_registered": false,
+        "response": "Usuário não cadastrado."
+    },
+    "expected_state": {
+        "is_registered": false,
+        "response": "Usuário não cadastrado."
+    }
+  }
+}

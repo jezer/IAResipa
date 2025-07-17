@@ -1,0 +1,4 @@
+2025-07-14 14:15:21,011 - INFO - Processando verificação/cadastro para usuário: 5511999999999011398
+2025-07-14 14:15:22,414 - INFO - Cliente Supabase criado com sucesso.
+2025-07-14 14:15:22,414 - INFO - Verificando usuário: 5511999999999011398
+2025-07-14 14:15:23,864 - INFO - HTTP Request: GET https://cquaryyrqlypmzfajbho.supabase.co/rest/v1/cadastro_pessoas_fisica?select=id%2Cphone_number&phone_number=eq.5511999999999011398 "HTTP/2 200 OK"

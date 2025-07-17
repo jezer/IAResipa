@@ -1,0 +1,14 @@
+
+graph TD
+    A[Waha: Nova Mensagem] -->|POST /webhook| B(Aplicação: Rota do Webhook)
+    B --> C{Analisar Tipo de Mensagem}
+    C -->|Texto| D[Usar Texto Diretamente]
+    C -->|Áudio| E[Transcrever Áudio para Texto]
+    C -->|Imagem| F["Extrair Texto da Imagem (OCR)"]
+    D --> G(Texto Padronizado)
+    E --> G
+    F --> G
+    G --> H[Enviar Texto para Análise]
+    H --> I[Formatar Resposta Padrão]
+    I --> J[Enviar Resposta via Waha]
+    J --> K[Registrar Interação]

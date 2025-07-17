@@ -1,0 +1,13 @@
+graph TD
+    A[Usuário WhatsApp] --> B(Waha - API Gateway);
+    B -- Mensagem Recebida --> C{n8n - Webhook Principal};
+    C -- Envia Dados da Mensagem --> D[Python - Lógica Principal];
+    D -- Resposta Processada --> E{n8n - Envia Resposta};
+    E -- Mensagem para Envio --> B;
+    B -- Envia para Usuário --> A;
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#ccf,stroke:#333,stroke-width:2px
+    style D fill:#cfc,stroke:#333,stroke-width:2px
+    style E fill:#ccf,stroke:#333,stroke-width:2px
