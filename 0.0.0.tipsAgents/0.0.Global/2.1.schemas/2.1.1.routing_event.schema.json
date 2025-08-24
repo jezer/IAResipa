@@ -1,0 +1,10 @@
+{
+  "ts": "2025-08-19T22:59:12-03:00",
+  "user_id": "anon",
+  "prompt": "<texto>",
+  "router_decision": {
+    "type": "single|split|reject",
+    "targets": ["agente_creator"]
+  },
+  "reason": "keywords: criar agente"
+}

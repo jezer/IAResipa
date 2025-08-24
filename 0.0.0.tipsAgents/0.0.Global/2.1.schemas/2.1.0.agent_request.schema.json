@@ -1,0 +1,12 @@
+{
+  "$schema": "https://example.com/schemas/agent_request.schema.json",
+  "type": "object",
+  "required": ["name","scope","deliverables"],
+  "properties": {
+    "name": {"type":"string"},
+    "scope": {"type":"string"},
+    "constraints": {"type":"array","items":{"type":"string"}},
+    "deliverables": {"type":"array","items":{"type":"string"}},
+    "related_agents": {"type":"array","items":{"type":"string"}}
+  }
+}

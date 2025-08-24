@@ -1,0 +1,31 @@
+name: "AgenteQualidade"
+version: "1.0.0"
+owner: "Portilho & Silva TC"
+trigger:
+  type: "cron"
+  schedule: "FREQ=DAILY;BYHOUR=3;BYMINUTE=0" # 03:00 todos os dias
+scope:
+  in_scope:
+    - "Auditar contradições entre agentes"
+    - "Analisar logs de interação e roteamento"
+    - "Extrair métricas e KPIs de performance dos agentes"
+    - "Gerar Pull Requests com melhorias e correções"
+    - "Validar a qualidade de novos agentes propostos"
+  out_of_scope:
+    - "Interação direta com o usuário final"
+    - "Criação de novos agentes"
+inputs:
+  - "logs/interactions/*.ndjson"
+  - "logs/routing/*.ndjson"
+  - "shared/*/proposals/"
+  - "agents/**/agent.yaml"
+outputs:
+  - type: "pull_request"
+  - type: "quality_report.json"
+  - type: "issue"
+constraints:
+  - "Toda melhoria proposta deve ser validada por testes e checklists"
+  - "Não deve alterar a lógica de negócio, apenas a estrutura e qualidade"
+dependencies:
+  - "agente_creator"
+  - "agente_roteador"

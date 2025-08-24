@@ -1,0 +1,32 @@
+name: "AgenteRoteador"
+version: "1.0.0"
+owner: "Portilho & Silva TC"
+scope:
+  in_scope:
+    - "Receber 100% das solicitações do usuário"
+    - "Analisar, classificar e rotear tarefas para o agente especialista correto"
+    - "Dividir solicitações complexas em múltiplas tarefas para diferentes agentes"
+    - "Rejeitar solicitações para as quais nenhum agente é compatível"
+  out_of_scope:
+    - "Executar tarefas de negócio (criar, auditar, etc.)"
+    - "Responder diretamente ao usuário com resultados, exceto em caso de rejeição"
+inputs:
+  - type: "user_prompt"
+outputs:
+  - type: "routing_decision"
+    schema_ref: "../schemas/routing_event.schema.json"
+constraints:
+  - "A decisão de roteamento deve ser baseada no arquivo de regras 'regras_roteamento.md'"
+  - "Deve aprender com falhas de roteamento (recusas de agentes) para refinar regras futuras"
+dependencies:
+  - "AgenteCreator"
+  - "AgenteQualidade"
+  - "AgenteNegocio"
+  - "AgenteArquiteto"
+policies:
+  rejection:
+    - "Se nenhum agente for compatível, sugerir a criação de um novo via AgenteCreator"
+logging:
+  level: "info"
+  emit:
+    - "logs/routing/*.ndjson"
