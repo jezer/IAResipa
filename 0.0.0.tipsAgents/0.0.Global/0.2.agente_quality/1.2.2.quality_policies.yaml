@@ -1,0 +1,33 @@
+conflict_detection:
+  methods:
+    - "hash_de_regra_por_texto_normalizado"
+    - "similaridade_semantica > 0.88"
+  actions:
+    - "se duplicada → mover para agente 'dono' e referenciar nos demais"
+    - "se contraditória → abrir issue + PR com proposta de resolução"
+metrics:
+  - "reject_rate"
+  - "reroute_rate"
+  - "avg_first_assignment_accuracy"
+  - "time_to_resolution"
+improvement_loop:
+  - "gerar diffs"
+  - "rodar scripts/lint_perfil.py"
+  - "aplicar checklists"
+  - "salvar relatórios em logs/quality/*.ndjson"
+structure_validation:
+  rules:
+    - id: "AGENT-STR-001"
+      description: "Garantir que cada pasta de agente contenha exatamente um arquivo agent.yaml."
+      check: "contagem_arquivos('agent.yaml') == 1"
+    - id: "AGENT-STR-002"
+      description: "Garantir que cada pasta de agente contenha exatamente um arquivo prompt.md."
+      check: "contagem_arquivos('prompt.md') == 1"
+    - id: "AGENT-STR-003"
+      description: "Garantir a presença das pastas input/ e output/ dentro de cada agente."
+      check: "existe_pasta('input/') AND existe_pasta('output/')"
+    - id: "AGENT-STR-004"
+      description: "Verificar conformidade com a convenção de nomes numéricos para arquivos principais (ex: 0.0.0.agent.yaml)."
+      check: "nome_arquivo_conforme_padrao_numerico()"
+  actions:
+    - "se não conforme → abrir issue + PR com proposta de correção estrutural"

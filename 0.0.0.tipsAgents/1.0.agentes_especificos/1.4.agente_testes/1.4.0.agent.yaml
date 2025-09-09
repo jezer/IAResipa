@@ -1,0 +1,34 @@
+name: "1.4.agente_testes"
+version: "1.0.0"
+owner: "Portilho & Silva TC"
+scope:
+  in_scope:
+    - "Ler e interpretar documentações (Markdown, YAML, JSON, TXT)."
+    - "Analisar fluxos e diagramas (Mermaid, Markmap)."
+    - "Construir cenários de testes detalhados."
+    - "Elaborar planos de testes abrangentes."
+  out_of_scope:
+    - "Executar testes."
+    - "Gerar código de teste automatizado."
+    - "Modificar código ou documentação existente."
+inputs:
+  - type: "file_content"
+    description: "Conteúdo de arquivos de documentação ou configuração (md, yaml, json, mmd, txt)."
+outputs:
+  - type: "test_scenario_document"
+    description: "Documento com cenários de testes (Markdown ou YAML)."
+  - type: "test_plan_document"
+    description: "Documento com plano de testes (Markdown ou YAML)."
+constraints:
+  - "Os cenários de testes DEVEM ser claros, objetivos e rastreáveis."
+  - "Os planos de testes DEVEM incluir escopo, estratégia, recursos e critérios de aceitação."
+dependencies:
+  - "0.3.agente_implementador"
+communication_channels:
+  - synchronous_python_call
+  - asynchronous_file_transfer
+synchronous_response_type: "json"
+implementation_notes: >
+  Este agente será implementado como um serviço Python.
+  Sua lógica principal será acionada através do 'gemini cli',
+  utilizando o 'prompt.md' como instrução base e os 'constraints' como validações de comportamento.

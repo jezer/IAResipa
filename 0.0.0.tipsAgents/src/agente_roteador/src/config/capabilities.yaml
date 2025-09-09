@@ -1,0 +1,20 @@
+clients:
+  quality_agent:
+    id: "quality_agent"
+    match:
+      intent: ["code_review", "quality_analysis"]
+      domains: ["python", "typescript"]
+    constraints:
+      max_tokens: 8000
+      allowed_actions: ["analyze", "suggest"]
+  creator_agent:
+    id: "creator_agent"
+    match:
+      intent: ["create_agent", "modify_agent"]
+      domains: ["agents", "prompts"]
+
+routing:
+  confidence_threshold: 0.65
+  topk: 2
+  conflict_policy: "prefer_specific"
+  fallback_policy: "respond_direct"

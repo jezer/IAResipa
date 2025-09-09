@@ -1,0 +1,8 @@
+default_rules:
+  min_confidence: 0.5
+  fallback_client: "default_client"
+
+routing_rules:
+  - pattern: ".*code.*"
+    client: "default_client"
+    confidence_threshold: 0.7

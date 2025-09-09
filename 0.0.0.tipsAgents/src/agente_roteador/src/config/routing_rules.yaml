@@ -1,0 +1,14 @@
+prioritization_rules:
+  exact_intent_match: 0.5
+  domain_match_per_domain: 0.3
+  restriction_penalty: -0.2
+
+task_division_policy:
+  split_on_multiple_intents: true
+  split_on_sequential_dependencies: true
+  max_subtasks_per_request: 3
+
+fallback_conditions:
+  no_match_above_threshold: true
+  client_restriction_violation: true
+  required_capabilities_unavailable: true

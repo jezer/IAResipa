@@ -1,0 +1,29 @@
+name: "1.3.agente_fluxos"
+version: "1.4.0"
+owner: "Portilho & Silva TC"
+scope:
+  in_scope:
+    - "Gerar sintaxe Mermaid crua e salvar em arquivos .mmd"
+    - "Gerar sintaxe Markmap completa e salvar em arquivos .md"
+    - "Converter descrições de processos em arquivos de diagrama baseados em texto"
+  out_of_scope:
+    - "Executar a lógica descrita no fluxo"
+    - "Criar diagramas em formatos não textuais ou binários"
+inputs:
+  - type: "text_description"
+    description: "Descrição textual do processo, sistema ou estrutura a ser diagramado."
+outputs:
+  - type: "file.write"
+    path: "../0.0.Global/2.0.docs/2.3.fluxos_gerados/{nome_do_diagrama}.[mmd|md]"
+    content: "Sintaxe crua (raw) para Mermaid ou bloco de código Markdown para Markmap."
+constraints:
+  - "A extensão do arquivo DEVE ser .mmd para diagramas Mermaid."
+  - "A extensão do arquivo DEVE ser .md para mapas mentais Markmap."
+  - "O output para Mermaid DEVE ser a sintaxe crua, SEM o bloco de código ```mermaid."
+  - "O output para Markmap DEVE manter o formato Markdown completo, incluindo o frontmatter."
+dependencies:
+  - "0.3.agente_implementador"
+communication_channels:
+  - synchronous_python_call
+  - asynchronous_file_transfer
+synchronous_response_type: "json" # Fluxos retorna JSON com o caminho do arquivo gerado

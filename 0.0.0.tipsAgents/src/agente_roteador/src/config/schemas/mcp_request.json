@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["content", "source", "context"],
+  "properties": {
+    "content": {
+      "type": "string",
+      "description": "Conteúdo da solicitação"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["gemini", "claude", "copilot", "cursor"],
+      "description": "Origem da solicitação"
+    },
+    "context": {
+      "type": "object",
+      "description": "Contexto específico do LLM"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+default_client:
+  type: openai
+  config:
+    api_key: dummy_key
+    model: gpt-4
+
+fallback_client:
+  type: anthropic
+  config:
+    api_key: dummy_key
+    model: claude-2
+
+gemini_api_key: "AIzaSyBbR52zZ37OlDXtNjWS_Nq85QXXG7E_hMw"
+capabilities: "capabilities.yaml"
+routing_rules: "routing_rules.yaml"
+gemini_prompts: "prompts.md"

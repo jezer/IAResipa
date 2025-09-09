@@ -1,0 +1,5 @@
+configuration_sources:
+  capabilities: "config/capabilities.yaml"    # registro de capacidades
+  routing_rules: "config/routing_rules.yaml"   # regras de roteamento
+  gemini_prompts: "config/prompts.md"        # templates de prompts
+  client_schemas: "config/schemas/*.json"     # contratos de comunicação

@@ -1,0 +1,13 @@
+clients:
+  default_client:
+    type: "openai"
+    capabilities:
+      - "text_generation"
+      - "code_generation"
+    confidence_threshold: 0.5
+  
+  fallback_client:
+    type: "anthropic"
+    capabilities:
+      - "text_generation"
+    confidence_threshold: 0.3

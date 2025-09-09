@@ -1,0 +1,43 @@
+name: agente_creator
+description: Agente responsável por criar novos agentes MCPClient e MCPServer
+type: mcpclient
+
+capabilities:
+  - create_mcpclient
+  - create_mcpserver
+  - template_management
+  - environment_setup
+
+config:
+  agents_path: "agents"
+  create_venv: true
+  install_dependencies: true
+  init_git: true
+  template_paths:
+    - "templates/base"
+    - "templates/client"
+    - "templates/server"
+  
+  template_dependencies:
+    mcpclient:
+      - pydantic
+      - aiohttp
+      - PyYAML
+    mcpserver:
+      - fastapi
+      - uvicorn
+      - python-jose[cryptography]
+      - pydantic
+      - aiohttp
+      - PyYAML
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  handlers:
+    - type: file
+      filename: logs/agent_creator.log
+      maxBytes: 1048576  # 1MB
+      backupCount: 3
+    - type: console
+      level: INFO

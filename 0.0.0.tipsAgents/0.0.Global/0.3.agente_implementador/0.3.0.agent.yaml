@@ -1,0 +1,30 @@
+name: "0.3.agente_implementador"
+version: "1.0.0"
+owner: "Portilho & Silva TC"
+scope:
+  in_scope:
+    - "Monitorar pastas 'output/' de todos os agentes."
+    - "Transferir arquivos da pasta 'output/{agente_origem}/{agente_destino}' para 'input/{agente_destino}/{agente_origem}'."
+    - "Garantir a integridade dos arquivos durante a transferência."
+  out_of_scope:
+    - "Interpretar o conteúdo dos arquivos transferidos."
+    - "Gerar conteúdo para agentes."
+    - "Iniciar comunicação entre agentes."
+inputs:
+  - type: "file_transfer_request"
+    description: "Arquivos colocados em pastas 'output/' de outros agentes."
+outputs:
+  - type: "file_transfer_confirmation"
+    description: "Confirmação de transferência para a pasta 'input/' do agente de destino."
+constraints:
+  - "DEVE operar de forma contínua e assíncrona."
+  - "DEVE registrar todas as transferências em logs."
+dependencies: []
+implementation_notes: >
+  Este agente será implementado como um serviço Python.
+  Sua lógica principal será acionada através do 'gemini cli',
+  utilizando o 'prompt.md' como instrução base e os 'constraints' como validações de comportamento.
+communication_channels:
+  - synchronous_python_call
+  - asynchronous_file_transfer
+synchronous_response_type: "json" # Implementador retorna JSON com o status da transferência

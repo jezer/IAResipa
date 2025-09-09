@@ -1,0 +1,19 @@
+
+graph TD
+    subgraph "Documentos Globais (`2.0.docs`)"
+        A["0.0.plano_de_projeto.md"];
+        B["0.1.regras_globais.md"];
+        C["0.2.arquitetura_pastas.md"];
+        D["0.4.protocolo_comunicacao.md"];
+    end
+
+    subgraph "Implementação dos Agentes (`src`)"
+        direction LR
+        E["src/agente_roteador/"];
+        F["src/agente_creator/"];
+        G["src/agente_quality/"];
+    end
+
+    B -- Define o comportamento de --> E & F & G;
+    C -- Define a localização de --> E & F & G;
+    D -- Define a comunicação entre --> E & F & G;
