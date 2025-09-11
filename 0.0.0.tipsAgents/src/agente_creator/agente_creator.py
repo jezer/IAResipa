@@ -18,7 +18,6 @@ logging.basicConfig(
 
 # Configuração do Gemini e Caminhos do Projeto
 load_dotenv()
-PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT"))
 
 GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
 if not GOOGLE_API_KEY:
@@ -28,9 +27,11 @@ if not GOOGLE_API_KEY:
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro')
 
-BASE_AGENT_YAML_PATH = PROJECT_ROOT / "src" / "agente_roteador" / "agent.yaml"
-
 def create_agent(request_data: dict):
+    # Inicialização JIT (Just-In-Time) do PROJECT_ROOT para compatibilidade com testes
+    PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT"))
+    BASE_AGENT_YAML_PATH = PROJECT_ROOT / "src" / "agente_roteador" / "agent.yaml"
+
     """
     Cria um novo agente e seus artefatos diretamente na pasta src/.
     """

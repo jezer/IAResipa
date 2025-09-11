@@ -9,12 +9,16 @@ import yaml
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from agente_roteador.src.server import app
+from agente_roteador.src.server import app, MCPServer
 from agente_creator import agente_creator
 
-@pytest.fixture(scope="module")
-def test_client():
+@pytest.fixture
+def test_client(project_structure):
     """Cria um cliente de teste para a aplicação FastAPI."""
+    # O project_structure retorna o root do projeto temporário
+    config_dir = project_structure / "src" / "agente_roteador" / "config"
+    # Criar uma instância do servidor para garantir que as rotas sejam registradas
+    server_instance = MCPServer(config_dir=config_dir)
     with TestClient(app) as client:
         yield client
 
@@ -135,7 +139,7 @@ def test_create_and_remove_agent_via_server(test_client, project_structure):
     assert response_remove.status_code == 200
     response_json = response_remove.json()
     assert response_json["success"] is True
-    assert "removido com sucesso" in response_json["content"]
+    assert "removidos com sucesso" in response_json["content"]
 
     # Verifica se o diretório foi REALMENTE removido
     assert not agent_dir.exists(), f"O diretório do agente '{agent_name}' deveria ter sido removido de {agent_dir}"

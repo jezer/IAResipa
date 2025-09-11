@@ -2,10 +2,9 @@ import shutil
 from pathlib import Path
 import os
 
-# Garante que o PROJECT_ROOT seja carregado a partir de variáveis de ambiente ou um padrão
-PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT", Path(__file__).parent.parent))
-
 def remove_agent(agent_name: str):
+    # Inicialização JIT (Just-In-Time) do PROJECT_ROOT para compatibilidade com testes
+    PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT", Path(__file__).parent.parent))
     """
     Localiza e remove o diretório de um agente com base no nome.
 

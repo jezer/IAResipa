@@ -57,8 +57,9 @@ app = FastAPI(
 )
 
 class MCPServer:
-    def __init__(self):
+    def __init__(self, config_dir: Optional[Path] = None):
         self.app = app
+        self.config_dir = config_dir or Path(__file__).parent / "config"
         self.config = self._load_configurations()
         
         # Configura a chave de API do Gemini
@@ -108,17 +109,15 @@ class MCPServer:
 
     def _load_configurations(self):
         """Carrega todas as configurações externas"""
-        # Get the directory where this script is located
-        current_dir = Path(__file__).parent
-        config_path = current_dir / "config" / "sources.yaml"
+        config_path = self.config_dir / "sources.yaml"
         
         with open(config_path, "r") as f:
             config_sources = yaml.safe_load(f)
         
         return {
-            "capabilities": self._load_yaml(current_dir / "config" / config_sources["capabilities"]),
-            "routing_rules": self._load_markdown(current_dir / "config" / config_sources["routing_rules"]),
-            "prompts": self._load_markdown(current_dir / "config" / config_sources["gemini_prompts"]),
+            "capabilities": self._load_yaml(self.config_dir / config_sources["capabilities"]),
+            "routing_rules": self._load_markdown(self.config_dir / config_sources["routing_rules"]),
+            "prompts": self._load_markdown(self.config_dir / config_sources["gemini_prompts"]),
             "gemini_api_key": config_sources["gemini_api_key"]
         }
 
